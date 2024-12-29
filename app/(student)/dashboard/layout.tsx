@@ -4,14 +4,9 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
  
 import React from 'react'
 
-interface LayoutProps {
-  children: React.ReactNode;
-  theme?: string;
-  layout?: string;
 
-}
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children }: {children: React.ReactNode}) {
   return (
     <SidebarProvider>
         <AppSidebar />
