@@ -1,5 +1,6 @@
 
 import { Header } from '@/components/Header'
+import { NextClassCard } from '@/components/nextClassCard'
 import React from 'react'
 
 export default function Page() {
@@ -10,13 +11,13 @@ export default function Page() {
     
     {/*The left side section*/}
 
-    {/*
+    
       <section className='1'>
         <div className='nextClass-component'>
           <NextClassCard />
         </div>
       </section> 
-      */}
+      
     </section>
   )
 }
