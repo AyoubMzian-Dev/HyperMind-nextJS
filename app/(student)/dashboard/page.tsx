@@ -1,4 +1,4 @@
-import { NextClassCard } from '@/components/nextClassCard'
+
 import { Header } from '@/components/Header'
 import React from 'react'
 
