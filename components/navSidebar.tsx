@@ -103,20 +103,14 @@ const subjects = [
   },
 ]
 
-export function AppSidebar() {
+export function NavSideBar() {
   const pathname = usePathname();
 
-  // Log the pathname and item URLs outside of the JSX
-  console.log(pathname);
-  items.forEach(item => console.log(item.url));
+
 
   return (
-    <Sidebar>
-      <SidebarHeader>
-        <SidebarMenuButton>
-
-        </SidebarMenuButton>
-      </SidebarHeader>
+    <Sidebar side="left" variant="sidebar">
+ 
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Navigation</SidebarGroupLabel>
