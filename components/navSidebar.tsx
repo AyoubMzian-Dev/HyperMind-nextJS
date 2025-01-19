@@ -1,5 +1,5 @@
 'use client'
-import { Calendar, Home, Bell, Book, Globe, Code, Atom, BookOpen, Palette, CheckSquare, MessageCircle } from "lucide-react"
+import { Calendar, Home, Book,  CheckSquare,  } from "lucide-react"
 
 import { usePathname } from 'next/navigation';
 import {
@@ -32,75 +32,70 @@ const items = [
     icon: Calendar,
   },
   {
-    title: "Subjects",
-    url: "/subjects",
+    title: "Lessons",
+    url: "/lessons",
     icon: Book,
-  },
-  {
-    title: "Notifications",
-    url: "/notifications",
-    icon: Bell,
   },
   {
     title: "Tasks",
     url: "/tasks",
     icon: CheckSquare,
   },
-  {
-    title: "Chat",
-    url: "/chat",
-    icon: MessageCircle,
-  },
+  // {
+  //   title: "Chat",
+  //   url: "/chat",
+  //   icon: MessageCircle,
+  // },
 ]
 
 // Subject menu items
-const subjects = [
-  {
-    title: "Mathematics",
-    url: "#",
-    icon: Book,
-  },
-  {
-    title: "Geography",
-    url: "#",
-    icon: Globe,
-  },
-  {
-    title: "Computer Science",
-    url: "#",
-    icon: Code,
-  },
-  {
-    title: "History",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Biology",
-    url: "#",
-    icon: Globe,
-  },
-  {
-    title: "Chemistry",
-    url: "#",
-    icon: Atom,
-  },
-  {
-    title: "Physics",
-    url: "#",
-    icon: Atom,
-  },
-  {
-    title: "Literature",
-    url: "#",
-    icon: BookOpen,
-  },
-  {
-    title: "Art",
-    url: "#",
-    icon: Palette,
-  },
-]
+// const subjects = [
+//   {
+//     title: "Mathematics",
+//     url: "#",
+//     icon: Book,
+//   },
+//   {
+//     title: "Geography",
+//     url: "#",
+//     icon: Globe,
+//   },
+//   {
+//     title: "Computer Science",
+//     url: "#",
+//     icon: Code,
+//   },
+//   {
+//     title: "History",
+//     url: "#",
+//     icon: Calendar,
+//   },
+//   {
+//     title: "Biology",
+//     url: "#",
+//     icon: Globe,
+//   },
+//   {
+//     title: "Chemistry",
+//     url: "#",
+//     icon: Atom,
+//   },
+//   {
+//     title: "Physics",
+//     url: "#",
+//     icon: Atom,
+//   },
+//   {
+//     title: "Literature",
+//     url: "#",
+//     icon: BookOpen,
+//   },
+//   {
+//     title: "Art",
+//     url: "#",
+//     icon: Palette,
+//   },
+// ]
 
 export function NavSideBar() {
   const pathname = usePathname();
@@ -111,7 +106,7 @@ export function NavSideBar() {
     <Sidebar side="left" variant="sidebar">
  
       <SidebarContent>
-        <SidebarGroup>
+        <SidebarGroup className="mt-16">
           <SidebarGroupLabel>Navigation</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -128,23 +123,7 @@ export function NavSideBar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-        <SidebarGroup>
-          <SidebarGroupLabel>Subjects</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {subjects.map((subject) => (
-                <SidebarMenuItem className="rounded-md" key={subject.title}>
-                  <SidebarMenuButton className="" asChild>
-                    <a href={subject.url}>
-                      <subject.icon />
-                      <span>{subject.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        
       </SidebarContent>
     </Sidebar>
   );

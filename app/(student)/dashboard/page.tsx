@@ -1,25 +1,37 @@
 
-import { Header } from '@/components/Header'
-import { NextClassCard } from '@/components/nextClassCard'
+
+
+
 import React from 'react'
 
+
+
+
 export default function Page() {
+
   return (
-    <section className=' h-full w-[calc(100%-16rem)]'>
-      <Header/>
+    <section className=' h-screen w-[calc(100%-16rem)]'>
+      
+
     
     
     {/*The left side section*/}
-
-    
-      <section className='1'>
-        <div className='nextClass-component'>
-          <NextClassCard />
+      <section className='p-4 min-h-18 '>
+        <h1 className='mb-4 text-white font-bold text-2xl '>Course Progress</h1>
+        <div className='flex w-full  px-6'>
         </div>
       </section> 
       
     </section>
   )
 }
+
+
+
+
+
+
+
+
 
 

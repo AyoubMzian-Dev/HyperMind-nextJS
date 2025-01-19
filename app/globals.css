@@ -43,6 +43,8 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;
     --hover-bg: 149.3 80.4% 90%;
     --sidebar-title-text: 20.5 90.2% 48.2%;
+    --dashboard-background: 224 71.4% 4.1%;
+    --dashboard-leesons-card: 220.9 39.3% 11%;
     
   }
   .dark {
@@ -81,6 +83,8 @@ body {
     --hover-bg: 149.3 80.4% 90%;
     --title-text: 20.5 90.2% 48.2%;
     --header-background: 20.5 90.2% 48.2%;
+    --dashboard-background: 224 71.4% 4.1%;
+    --dashboard-leesons-card: 220.9 39.3% 11%;
   }
 }
 

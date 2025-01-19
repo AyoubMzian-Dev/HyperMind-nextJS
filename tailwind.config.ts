@@ -62,7 +62,12 @@ export default {
   			},
 			Header:{
 				background: 'hsl(var(--header-background))'
+			},
+			Dashboard:{
+				background: 'hsl(var(--dahboard-background))',
+				cardBackground: 'hsl(var(--dashboard-leesons-card))'
 			}
+
   			// 'header-background': 'var(--header-background)'
   		},
   		borderRadius: {

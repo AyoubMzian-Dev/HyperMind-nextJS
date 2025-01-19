@@ -1,26 +1,35 @@
-import { Button } from "@/components/ui/button"
+
 import React from 'react'
 import { SignedIn, UserButton } from '@clerk/nextjs'
-import { Plus } from "lucide-react"
+import { Plus, Bell } from "lucide-react"
 import { SearchBar } from "./SearchBar"
+import Link from "next/link"
+import SideBarForm from './sideBarForm'
+
+
 
 export const Header = () => {
   return (
-    <header className="w-full bg-sidebar bg-gray-900 flex justify-between items-center p-4 ">
-        <ul className="group-1">
-            
-            <SignedIn>
-                {/* Mount the UserButton component */}
-                <UserButton />
-            </SignedIn>
-        </ul>
+    <header className="w-[calc(100%-12rem)] self-end bg-sidebar bg-gray-900 flex justify-between items-center p-4 ">
+      <ul className="group-1 flex justify-around items-center">
 
-        <SearchBar/>
+        <SignedIn>
+          {/* Mount the UserButton component */}
+          <UserButton />
+        </SignedIn>
 
-        <ul className="group-2 flex items-center">
-            <Button variant="secondary" className="bg-green-600 text-gray-200 hover:bg-green-700"><Plus className=""/>Create new task </Button>
-            
-        </ul>
+        <Link href={'/notifications'} className="mx-4">
+          <Bell />
+        </Link>
+      </ul>
+
+      <SearchBar />
+      <SideBarForm>
+      <Plus className="mr-2 w-4"/>Create new task 
+      </SideBarForm>
+
+
+
     </header>
   )
 }

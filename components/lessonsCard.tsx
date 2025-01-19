@@ -1,0 +1,73 @@
+import Image from 'next/image'
+import { Badge } from "@/components/ui/badge"
+import React from 'react'
+import { Lesson } from '@/lib/interface'
+
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Button } from './ui/button'
+
+
+
+
+
+
+const LessonsCard: React.FC<Lesson> = ({
+  lessonId,
+  lessonTitle,
+  lessonDescription,
+  lessonLongTime,
+  lessonSections,
+  lessonTags,
+  lessonsImgURL,
+  lessonSubject,
+}) => {
+
+
+  //the bisic url will be like: /subjects/math/lessonId
+
+
+  return (
+    <Card id={lessonId} className='flex h-36 my-6 mx-3 w-2/3 '>
+      <Image src={"/notfound.com" || lessonsImgURL } alt='lesson imag' className='bg-gray-600 rounded-lg' height={50} width={200} />
+      <div className='flex flex-col w-full pt-3'>
+
+        <CardHeader className='  flex justify-between w-full mb-2 h-1/3 items-center '>
+
+
+          <div className='flex items-start'>
+            <CardTitle >{lessonTitle || "lesson title"}</CardTitle>
+            <Badge variant="outline" className='mx-4 mb-3'>{lessonSubject.split(" ").slice(0, 1).join(" ")}</Badge>
+
+          </div>
+          <Button variant="link">Have a look</Button>
+
+        </CardHeader>
+        <CardContent className='flex flex-col justify-between pb-0 h-full'>
+          <CardDescription className='max-w-96'>{lessonDescription}</CardDescription>
+        </CardContent>
+        <CardFooter className='flex justify-between w-full h-1/3 items-center'>
+            <div>
+              {lessonTags.map((tag, index) => (
+                <Badge key={index} variant="secondary" className='mx-2 max-w-24'>{tag}</Badge>
+
+              ))}
+
+            </div>
+            <Badge>Sections: {lessonSections.length}</Badge>
+        </CardFooter>
+      </div>
+    </Card>
+
+  )
+}
+
+
+export default LessonsCard;
