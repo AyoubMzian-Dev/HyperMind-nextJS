@@ -1,16 +1,16 @@
 
 import React from 'react'
 import { SignedIn, UserButton } from '@clerk/nextjs'
-import { Plus, Bell } from "lucide-react"
+import { Bell } from "lucide-react"
 import { SearchBar } from "./SearchBar"
 import Link from "next/link"
-import SideBarForm from './sideBarForm'
+
 
 
 
 export const Header = () => {
   return (
-    <header className="w-[calc(100%-12rem)] self-end bg-sidebar bg-gray-900 flex justify-between items-center p-4 ">
+    <header className="fixed w-[calc(100%-12rem)] self-end bg-sidebar bg-gray-900 flex justify-between items-center p-4 ">
       <ul className="group-1 flex justify-around items-center">
 
         <SignedIn>
@@ -24,10 +24,10 @@ export const Header = () => {
       </ul>
 
       <SearchBar />
-      <SideBarForm>
-      <Plus className="mr-2 w-4"/>Create new task 
-      </SideBarForm>
-
+      
+    <div>
+      <Link href={'/profile'} className="text-white text-2xl font-bold">user profile</Link>
+    </div>
 
 
     </header>

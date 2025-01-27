@@ -1,7 +1,7 @@
 import React from 'react'
 import { TaskCard } from '@/components/taskCard'
+import TaskOprationBar from '@/components/taskOprationBar'
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 
 
@@ -320,51 +320,31 @@ const tasksData = [
 
 
 
-
-
 export default function page() {
   return (
-    <div>
-        <Tabs defaultValue="cardsView" className="w-full mt-28 flex flex-col">
-            <TabsList className='max-w-44 self-end mx-8'>
-                <TabsTrigger value="cardsView">cards</TabsTrigger>
-                <TabsTrigger value="listView">list</TabsTrigger>
-            </TabsList>
-            <TabsContent value="cardsView">
-                    <section className="flex flex-wrap justify-center">
-                        {tasksData.map((task) => (
-                            <TaskCard 
-                                key={task.taskId}
-                                taskTitle={task.taskTitle}
-                                taskDescription={task.taskDescription}
-                                taskDueDate={task.taskDueDate}
-                                taskStatus={task.taskStatus}
-                                taskDueTime={task.taskDueTime}
-                                taskTags={task.taskTags}
-                                taskType={task.taskType}
-                                taskId={task.taskId}
-                                taskSubject={task.taskSubject}
-                                taskSteps={task.taskSteps}
-                                taskCreatedDate={task.taskCreatedDate}
-                                taskStepsCompelted={task.taskStepsCompelted}
-                                taskAttachments={task.taskAttachments}
-                                taskLinks={task.taskLinks}
-                            />
-                        ))}
-                    </section>
-
-            </TabsContent>
-            <TabsContent value="listView">
-                <h1>san of bitch</h1>
-
-                <section>
-
-                </section>
-            </TabsContent>
-         </Tabs>
-
-        
-        
+    <div className='flex flex-col mt-20'>
+      <TaskOprationBar/>
+      <section className="flex flex-wrap justify-center">
+        {tasksData.map((task) => (
+          <TaskCard
+            key={task.taskId}
+            taskTitle={task.taskTitle}
+            taskDescription={task.taskDescription}
+            taskDueDate={task.taskDueDate}
+            taskStatus={task.taskStatus}
+            taskDueTime={task.taskDueTime}
+            taskTags={task.taskTags}
+            taskType={task.taskType}
+            taskId={task.taskId}
+            taskSubject={task.taskSubject}
+            taskSteps={task.taskSteps}
+            taskCreatedDate={task.taskCreatedDate}
+            taskStepsCompelted={task.taskStepsCompelted}
+            taskAttachments={task.taskAttachments}
+            taskLinks={task.taskLinks}
+          />
+        ))}
+      </section>
     </div>
   )
 }

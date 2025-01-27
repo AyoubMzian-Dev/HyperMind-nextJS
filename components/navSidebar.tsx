@@ -8,10 +8,12 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import Link from "next/link";
 
 
  
@@ -106,13 +108,16 @@ export function NavSideBar() {
     <Sidebar side="left" variant="sidebar">
  
       <SidebarContent>
-        <SidebarGroup className="mt-16">
+        <SidebarHeader className="border-b-[1px] border-gray-600">
+          <Link className="text-2xl mx-4 my-3" href={'/dashboard'}><span className="text-specialColor">Hyper</span>Minde</Link>
+        </SidebarHeader>
+        <SidebarGroup className="mt-12 " >
           <SidebarGroupLabel>Navigation</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
-                <SidebarMenuItem className={pathname === item.url ? 'bg-sidebar-accent rounded-md text-sidebar-accent-foreground font-bold' : '' }  key={item.title}>
-                  <SidebarMenuButton className="rounded-md" asChild>
+                <SidebarMenuItem className={pathname === item.url ? 'bg-specialColor  rounded-md text-white font-bold' : '' }  key={item.title}>
+                  <SidebarMenuButton className="rounded-md hover:bg-specialColorHover hover:border-[2px] hover:border-solid hover:border-green-500" asChild>
                     <a href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>

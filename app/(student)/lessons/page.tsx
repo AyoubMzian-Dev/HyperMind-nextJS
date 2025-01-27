@@ -1,7 +1,7 @@
 import LessonsCard from "@/components/lessonsCard"
-import { Sidebar, SidebarProvider } from "@/components/ui/sidebar"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { schoolSubjects, defaultTabValue } from "@/lib/fakeData"
+import Link from "next/link"
 
 import React, { Fragment } from 'react'
 
@@ -9,7 +9,7 @@ export default function page() {
   return (
     <>
       {/* the lessons list based on the subject  */}
-      <Tabs defaultValue={defaultTabValue} className="w-full  " >
+      <Tabs defaultValue={defaultTabValue} className="w-full mt-20 " >
         {/* the header section for all the subjects */}
         <TabsList className="bg-black  ">
           {schoolSubjects.map((subject, index) => (
@@ -20,7 +20,7 @@ export default function page() {
         {schoolSubjects.map((subject, index) => (
           <TabsContent key={index} value={subject.name}>
             {subject.lessons.map((lesson, index) => (
-              <Fragment key={index}>
+              <Link href={`/lessons/${lesson.lessonId}`} key={index}>
                 <LessonsCard
                   lessonId={lesson.lessonId}
                   lessonTitle={lesson.lessonTitle}
@@ -31,17 +31,12 @@ export default function page() {
                   lessonsImgURL={lesson.lessonsImgURL}
                   lessonSubject={lesson.lessonSubject}
                 />
-              </Fragment>
+              </Link>
             ))}
 
             {/*
              right side bar with chart that shows the progress in user scoor on each lesson
             */}
-            <SidebarProvider >
-              <Sidebar side="right" className="lg:mt-1 border-none absolute " >
-
-              </Sidebar>
-            </SidebarProvider>
           </TabsContent>
         ))}
 
