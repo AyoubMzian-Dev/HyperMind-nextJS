@@ -76,7 +76,7 @@ export default function page() {
                     <ul >
                       {
                         lesson.lessonSections.map((section, index) => (
-                          <li className="text-base font-bold my-4" key={index}>{++index}- {section}?</li>
+                          <li className="text-base font-bold my-4" key={index}>{++index}- {section.title}?</li>
                         ))
                       }
                     </ul>
