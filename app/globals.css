@@ -50,11 +50,11 @@ body {
     --sections-background: hsl(217, 94%, 6%);
     --sections-background-hover: hsl(217, 94%, 12%);
   
-    --component-bg: hsl(215, 54%, 25%);
-    --component-bg-hover: hsl(215, 54%, 35%);
+    --component-bg: hsl(149, 63%, 21%);
+    --component-bg-hover: hsl(127, 54%, 35%);
   
     --special-color: hsl(143, 95%, 31%);
-    --special-color-hover: hsl(143, 95%, 31%, 0.527);
+    --special-color-hover: hsla(143, 99%, 35%, 0.54);
     --dark-special-color:hsl(120, 75%, 12%);
   
     --tags-bg: hsl(170, 100%, 17%);

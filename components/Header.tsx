@@ -10,7 +10,7 @@ import Link from "next/link"
 
 export const Header = () => {
   return (
-    <header className="fixed w-[calc(100%-12rem)] self-end bg-sidebar bg-gray-900 flex justify-between items-center p-4 ">
+    <header className="fixed z-20 w-[calc(100%-12rem)] self-end bg-sidebar bg-gray-900 flex justify-between items-center p-4 ">
       <ul className="group-1 flex justify-around items-center">
 
         <SignedIn>

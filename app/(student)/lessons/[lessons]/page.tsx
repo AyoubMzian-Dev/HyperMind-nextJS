@@ -1,7 +1,19 @@
+
 import React from 'react'
+import {LessonSidebar} from '@/components/lessonSidebar'
+
+
+
+
+
+
 
 export default function page () {
+  
   return (
-    <div>page</div>
+    <main className='pt-20'>
+      <LessonSidebar/>
+
+    </main>
   )
 }

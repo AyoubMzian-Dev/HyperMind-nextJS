@@ -29,12 +29,11 @@ const LessonsCard: React.FC<Lesson> = ({
   lessonSubject,
 }) => {
 
-
   //the bisic url will be like: /subjects/math/lessonId
 
 
   return (
-    <Card id={lessonId} className='flex bg-sectionsBackground border-none text-normalText h-36 my-6 mx-3 w-2/3 '>
+    <Card id={lessonId} className='flex bg-sectionsBackground border-none text-normalText h-36  '>
       <Image src={"/notfound.com" || lessonsImgURL } alt=' ' className='bg-componentBg rounded-lg' height={50} width={200} />
       <div className='flex flex-col w-full pt-3'>
 
@@ -46,7 +45,7 @@ const LessonsCard: React.FC<Lesson> = ({
             <Badge variant="outline" className='mx-4 outline-none border-[2px] border-specialColorHover text-specialColor '>{lessonSubject.split(" ").slice(0, 1).join(" ")}</Badge>
 
           </div>
-          <Button variant="link" className='text-specialColor'>Have a look</Button>
+          <span  className=' underline-offset-4 hover:underline text-specialColor'>Have a look</span>
 
         </CardHeader>
         <CardContent className='flex flex-col justify-between pb-0 h-full'>
