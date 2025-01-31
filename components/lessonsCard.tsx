@@ -34,7 +34,7 @@ const LessonsCard: React.FC<Lesson> = ({
 
   return (
     <Card id={lessonId} className='flex bg-sectionsBackground border-none text-normalText h-36  '>
-      <Image src={"/" || lessonsImgURL } alt=' ' className='bg-componentBg rounded-lg' height={50} width={200} />
+      <Image src={ lessonsImgURL } alt=' ' className='bg-componentBg rounded-lg' height={50} width={200} />
       <div className='flex flex-col w-full pt-3'>
 
         <CardHeader className='pt-0 flex justify-between w-full  h-1/3 items-center '>

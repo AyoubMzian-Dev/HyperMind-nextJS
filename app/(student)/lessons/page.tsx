@@ -60,7 +60,7 @@ export default function page() {
                   <AlertDialogHeader className="felx border-r-2 pr-6 h-[100%] flex-col max-w-[50%]">
                     <AlertDialogTitle className="text-xl">{lesson.lessonTitle}</AlertDialogTitle>
                     <Image 
-                      src={lesson.lessonsImgURL || "/"}
+                      src={lesson.lessonsImgURL }
                       alt={`${lesson.lessonTitle} thumbnail`}
                       className='bg-componentBg rounded-lg'
                       height={300}
