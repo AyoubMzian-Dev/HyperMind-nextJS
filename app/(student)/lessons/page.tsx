@@ -59,7 +59,14 @@ export default function page() {
                   {/* left side */}
                   <AlertDialogHeader className="felx border-r-2 pr-6 h-[100%] flex-col max-w-[50%]">
                     <AlertDialogTitle className="text-xl">{lesson.lessonTitle}</AlertDialogTitle>
-                    <Image src={"https://w7.pngwing.com/pngs/684/622/png-transparent-logo-subject-english-miscellaneous-blue-building-thumbnail.png" || lesson.lessonsImgURL } alt=' ' className='bg-componentBg rounded-lg' height={300} width={500} />
+                    <Image 
+                      src={lesson.lessonsImgURL || "/"}
+                      alt={`${lesson.lessonTitle} thumbnail`}
+                      className='bg-componentBg rounded-lg'
+                      height={300}
+                      width={500}
+                      priority
+                    />
                     <AlertDialogDescription>{lesson.lessonDescription}</AlertDialogDescription>
                   </AlertDialogHeader>
 

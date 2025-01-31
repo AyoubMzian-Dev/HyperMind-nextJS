@@ -37,7 +37,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["algebra", "math", "equations"],
-        lessonsImgURL: "https://example.com/math1.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Mathematics",
         lessonQwastions: ["What is algebra?", "How do we solve basic equations?", "What are common algebra problems?"]
       },
@@ -67,7 +67,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["geometry", "shapes", "angles"],
-        lessonsImgURL: "https://example.com/math2.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Mathematics",
         lessonQwastions: ["What are the basic geometric shapes?", "How do we measure angles?", "How does the Pythagorean theorem work?"]
       },
@@ -97,7 +97,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["trigonometry", "math", "functions"],
-        lessonsImgURL: "https://example.com/math3.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Mathematics",
         lessonQwastions: ["What is the sine function?", "How do we use cosine?", "What are the applications of tangent?"]
       },
@@ -137,7 +137,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["history", "civilizations", "culture"],
-        lessonsImgURL: "https://example.com/history1.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "History",
         lessonQwastions: ["What was life like in Mesopotamia?", "How did ancient Egyptians build pyramids?", "What contributions did Greece make to modern society?"]
       },
@@ -167,7 +167,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["world war", "history", "war"],
-        lessonsImgURL: "https://example.com/history2.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "History",
         lessonQwastions: ["What led to World War II?", "What were the decisive battles?", "How did WWII change the world?"]
       },
@@ -197,7 +197,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["history", "renaissance", "culture"],
-        lessonsImgURL: "https://example.com/history3.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "History",
         lessonQwastions: ["What is humanism?", "How did art evolve during the Renaissance?", "What scientific discoveries were made?"]
       },
@@ -237,7 +237,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["physics", "science", "motion"],
-        lessonsImgURL: "https://example.com/science1.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Science",
         lessonQwastions: ["How do objects move?", "What are Newton's laws of motion?", "How is energy transferred?"]
       },
@@ -267,7 +267,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["chemistry", "science", "reactions"],
-        lessonsImgURL: "https://example.com/science2.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Science",
         lessonQwastions: ["How do chemical reactions work?", "How is the periodic table organized?", "What is atomic structure?"]
       },
@@ -297,7 +297,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["biology", "science", "cells"],
-        lessonsImgURL: "https://example.com/science3.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Science",
         lessonQwastions: ["What are cells made of?", "How does DNA work?", "How do human body systems function?"]
       },
@@ -337,7 +337,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["grammar", "english", "language"],
-        lessonsImgURL: "https://example.com/english1.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "English",
         lessonQwastions: ["What are the parts of speech?", "How do we structure sentences?", "When do we use different punctuation marks?"]
       },
@@ -367,7 +367,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["literature", "analysis", "english"],
-        lessonsImgURL: "https://example.com/english2.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "English",
         lessonQwastions: ["How do we analyze text?", "What makes a strong theme?", "How do we analyze characters?"]
       },
@@ -397,7 +397,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["writing", "creativity", "english"],
-        lessonsImgURL: "https://example.com/english3.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "English",
         lessonQwastions: ["What makes a good story?", "How do we develop compelling characters?", "How do we structure a plot?"]
       },
@@ -443,7 +443,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["PE", "fitness", "exercise"],
-        lessonsImgURL: "https://example.com/pe1.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Physical Education",
         lessonQwastions: ["Why is warming up important?", "What are effective cardio exercises?", "How do we build strength safely?", "Why do we need to cool down?"]
       },
@@ -479,7 +479,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["PE", "sports", "teamwork"],
-        lessonsImgURL: "https://example.com/pe2.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Physical Education",
         lessonQwastions: ["What are the basic rules of football?", "How do we play basketball?", "What makes volleyball unique?", "Why is teamwork important in sports?"]
       },
@@ -509,7 +509,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["health", "nutrition", "PE"],
-        lessonsImgURL: "https://example.com/pe3.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Physical Education",
         lessonQwastions: ["What makes a balanced diet?", "How much exercise do we need?", "What are good health habits?"]
       },
@@ -549,7 +549,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["art", "drawing", "creativity"],
-        lessonsImgURL: "https://example.com/art1.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Art",
         lessonQwastions: ["How do we draw basic lines?", "What are different shading techniques?", "How do we compose an image?"]
       },
@@ -579,7 +579,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["art", "painting", "techniques"],
-        lessonsImgURL: "https://example.com/art2.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Art",
         lessonQwastions: ["How do we use watercolors?", "What are acrylic painting techniques?", "How do we use different brushes?"]
       },
@@ -609,7 +609,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["art", "sculpture", "creativity"],
-        lessonsImgURL: "https://example.com/art3.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Art",
         lessonQwastions: ["How do we work with clay?", "What are basic sculpting techniques?", "How do we finish a sculpture?"]
       },
@@ -649,7 +649,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["music", "theory", "learning"],
-        lessonsImgURL: "https://example.com/music1.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Music",
         lessonQwastions: ["What are musical notes?", "How do scales work?", "What are musical intervals?"]
       },
@@ -679,7 +679,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["music", "instruments", "skills"],
-        lessonsImgURL: "https://example.com/music2.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Music",
         lessonQwastions: ["How do we play basic guitar chords?", "What are piano fundamentals?", "How do we keep rhythm on drums?"]
       },
@@ -709,7 +709,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["music", "choir", "vocal"],
-        lessonsImgURL: "https://example.com/music3.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Music",
         lessonQwastions: ["How do we breathe properly for singing?", "How do we control pitch?", "What makes good vocal harmony?"]
       },
@@ -749,7 +749,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["language", "spanish", "vocabulary"],
-        lessonsImgURL: "https://example.com/language1.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Languages",
         lessonQwastions: ["What are common Spanish words?", "How does Spanish grammar work?", "How do we pronounce Spanish words?"]
       },
@@ -779,7 +779,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["language", "french", "conversation"],
-        lessonsImgURL: "https://example.com/language2.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Languages",
         lessonQwastions: ["What are essential French phrases?", "How do we form French sentences?", "How do we have basic French conversations?"]
       },
@@ -809,7 +809,7 @@ export const schoolSubjects: SchoolSubject[] = [
           }
         ],
         lessonTags: ["language", "english", "esl"],
-        lessonsImgURL: "https://example.com/language3.jpg",
+        lessonsImgURL: "/",
         lessonSubject: "Languages",
         lessonQwastions: ["What are basic English grammar rules?", "How do we build English vocabulary?", "How do we improve English pronunciation?"]
       },
