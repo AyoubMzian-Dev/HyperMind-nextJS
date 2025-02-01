@@ -19,7 +19,7 @@ import {
 export const LessonSidebar = () => {
 
     const params = useParams();
-    const lessonId = params.lessons as string;
+    const lessonId = params.lessonId as string;
 
 
 
@@ -33,9 +33,11 @@ export const LessonSidebar = () => {
         return null
     }
 
+
     const lesson = findLessonById();
+
     return (
-        <div className='max-h-[80%]'>
+        <div className=''>
             <SidebarProvider className='h-80 !important'>
                 <Sidebar className='h-[calc(100%-4rem)] w-72 self-end'>
                     <SidebarHeader className='px-4 '>
@@ -65,9 +67,11 @@ export const LessonSidebar = () => {
                                                 </SidebarMenuItem>
                                             </AccordionTrigger>
                                             <AccordionContent>
-                                                <SidebarMenuItem className='list-item  m-2  ml-12' >
-                                                    <h2 className='text-sm'>{section.exercise}</h2>
+                                               {section.exercise ? (
+                                                   <SidebarMenuItem className='list-item  m-2  ml-12' >
+                                                    <h2 className='text-sm'>{typeof section.exercise === 'string' ? section.exercise : (section.exercise as { title: string }).title}</h2>
                                                 </SidebarMenuItem>
+                                                ) : "" }
                                             </AccordionContent>
                                         </AccordionItem>
                                     </Accordion>

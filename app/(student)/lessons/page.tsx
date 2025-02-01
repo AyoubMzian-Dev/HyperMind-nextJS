@@ -27,7 +27,7 @@ export default function page() {
   return (
     <main>
       {/* the lessons list based on the subject  */}
-      <Tabs defaultValue={defaultTabValue} className="w-full mt-20 flex flex-col" >
+      <Tabs defaultValue={defaultTabValue} className="w-full mt-2 flex flex-col" >
         {/* the header section for all the subjects */}
         <TabsList className="bg-black  ">
           {schoolSubjects.map((subject, index) => (
@@ -42,6 +42,7 @@ export default function page() {
               <AlertDialog key={index}>
                 < AlertDialogTrigger className=" h-36 w-2/3 my-6 mx-3" >
                   <LessonsCard
+                  lessonType
                     lessonId={lesson.lessonId}
                     lessonTitle={lesson.lessonTitle}
                     lessonDescription={lesson.lessonDescription}

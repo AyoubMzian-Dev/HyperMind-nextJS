@@ -16,7 +16,7 @@ export default function Layout({ children }: {children: React.ReactNode}) {
           <SidebarProvider>
             <NavSideBar/>
           </SidebarProvider>
-          <div className="w-[calc(100%-12rem)]">
+          <div className="lg:w-[calc(100%-12rem)] lg:h-[calc(100vh-4.5rem)] self-end">
             {children}
           </div>
         </div>
