@@ -8,12 +8,10 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import Link from "next/link";
 
 
  
@@ -24,7 +22,7 @@ import Link from "next/link";
 // Navigation menu items.
 const items = [
   {
-    title: "Home",
+    title: "Dashboard",
     url: "/dashboard",
     icon: Home,
   },
@@ -50,54 +48,7 @@ const items = [
   // },
 ]
 
-// Subject menu items
-// const subjects = [
-//   {
-//     title: "Mathematics",
-//     url: "#",
-//     icon: Book,
-//   },
-//   {
-//     title: "Geography",
-//     url: "#",
-//     icon: Globe,
-//   },
-//   {
-//     title: "Computer Science",
-//     url: "#",
-//     icon: Code,
-//   },
-//   {
-//     title: "History",
-//     url: "#",
-//     icon: Calendar,
-//   },
-//   {
-//     title: "Biology",
-//     url: "#",
-//     icon: Globe,
-//   },
-//   {
-//     title: "Chemistry",
-//     url: "#",
-//     icon: Atom,
-//   },
-//   {
-//     title: "Physics",
-//     url: "#",
-//     icon: Atom,
-//   },
-//   {
-//     title: "Literature",
-//     url: "#",
-//     icon: BookOpen,
-//   },
-//   {
-//     title: "Art",
-//     url: "#",
-//     icon: Palette,
-//   },
-// ]
+
 
 export function NavSideBar() {
   const pathname = usePathname();
@@ -105,22 +56,20 @@ export function NavSideBar() {
 
 
   return (
-    <Sidebar side="left" variant="sidebar">
- 
+    <Sidebar side="left" variant="sidebar" className=" m-0 border-gray-800  bg-sectionsBackground">
+ {/*go and fuck your self */}
+ {/* done TODO fix the styling of the side bar, and fix the layout */}
       <SidebarContent>
-        <SidebarHeader className="border-b-[1px] border-gray-600">
-          <Link className="text-2xl mx-4 my-3" href={'/dashboard'}><span className="text-specialColor">Hyper</span>Minde</Link>
-        </SidebarHeader>
-        <SidebarGroup className="mt-12 " >
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+        <SidebarGroup className="mt-32 " >
+          <SidebarGroupLabel className="text-sm mb-4">Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
-                <SidebarMenuItem className={pathname === item.url ? 'bg-specialColor  rounded-md text-white font-bold' : '' }  key={item.title}>
-                  <SidebarMenuButton className="rounded-md hover:bg-specialColorHover hover:border-[2px] hover:border-solid hover:border-green-500" asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
+                <SidebarMenuItem className={pathname === item.url ? 'bg-specialColor  text-accent' : '' }  key={item.title}>
+                  <SidebarMenuButton className="rounded-md hover:bg-primary my-1 hover:border-[2px] hover:border-solid hover:border-green-500" asChild>
+                    <a href={item.url} >
+                      <item.icon className={"w-4 text-2xl"}/>
+                      <span className={"text-base mx-2"}>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

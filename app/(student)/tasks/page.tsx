@@ -322,7 +322,7 @@ const tasksData = [
 
 export default function page() {
   return (
-    <div className='flex flex-col mt-20'>
+    <div className='flex flex-col'>
       <TaskOprationBar/>
       <section className="flex flex-wrap justify-center">
         {tasksData.map((task) => (

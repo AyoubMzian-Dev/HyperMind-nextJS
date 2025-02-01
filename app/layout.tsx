@@ -2,8 +2,16 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import { dark } from '@clerk/themes'
 
 
+
+
+
+
+config.autoAddCss = false;
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -26,10 +34,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-       <ClerkProvider>
+       <ClerkProvider
+           appearance={{
+               baseTheme: dark,
+           }}
+       >
 
           <body
-            className={`${geistSans.variable} ${geistMono.variable} bg-black text-white antialiased`}
+            className={`${geistSans.variable} ${geistMono.variable} bg-background text-white antialiased`}
             >
             {children}
           </body>

@@ -16,6 +16,11 @@ pnpm dev
 # or
 bun dev
 ```
+To run the mongoDB server:
+```bash
+mongod --dbpath /Users/pro/mongodb_data 
+
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

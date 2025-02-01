@@ -26,7 +26,7 @@ const LessonsCard: React.FC<Lesson> = ({
   lessonSections,
   lessonTags,
   lessonsImgURL,
-  lessonSubject,
+
 }) => {
 
   //the bisic url will be like: /subjects/math/lessonId
@@ -35,21 +35,21 @@ const LessonsCard: React.FC<Lesson> = ({
   return (
     <Card id={lessonId} className='flex bg-sectionsBackground border-none text-normalText h-36  '>
       <Image src={ lessonsImgURL } alt=' ' className='bg-componentBg rounded-lg' height={50} width={200} />
-      <div className='flex flex-col w-full pt-3'>
+      <div className='flex flex-col w-full '>
 
-        <CardHeader className='pt-0 flex justify-between w-full  h-1/3 items-center '>
+        <CardHeader className='pt-7 flex justify-between w-full  h-1/3 items-center '>
 
 
-          <div className='flex items-start'>
-            <CardTitle >{lessonTitle || "lesson title"}</CardTitle>
-            <Badge variant="outline" className='mx-4 outline-none border-[2px] border-specialColorHover text-specialColor '>{lessonSubject.split(" ").slice(0, 1).join(" ")}</Badge>
+          <div className=' flex items-start'>
+            <CardTitle className='text-lg' >{lessonTitle || "lesson title"}</CardTitle>
+
 
           </div>
           <span  className=' underline-offset-4 hover:underline text-specialColor'>Have a look</span>
 
         </CardHeader>
         <CardContent className='flex flex-col justify-between pb-0 h-full'>
-          <CardDescription className='max-w-96  text-easyText'>{lessonDescription}</CardDescription>
+          <CardDescription className='max-w-96 text-start text-xs  text-easyText'>{lessonDescription}</CardDescription>
         </CardContent>
         <CardFooter className='flex justify-between w-full h-1/3 items-center'>
             <div>

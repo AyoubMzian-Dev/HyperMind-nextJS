@@ -3,7 +3,7 @@ import React from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from './ui/button'
 
-export default function StartButton({ children }: { children: string }) {
+export default function StartButton({ children }: { children: object }) {
 
     const router = useRouter()
     const handleStartLesson = (lessonId: string) => {

@@ -16,55 +16,98 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Algebra Basics",
         lessonDescription: "Introduction to algebraic expressions and equations.",
         lessonLongTime: "45 minutes",
+        lessonType: true,
+        lessonTags: ["algebra", "math", "equations"],
+        lessonsImgURL: "/",
+        lessonSubject: "Mathematics",
+        lessonQwastions: ["What is algebra?", "How do we solve basic equations?", "What are common algebra problems?"],
         lessonSections: [
           {
             title: "Introduction",
             id: "intro-1",
-            exercise: "Learn basic algebra concepts",
-            status: false
+            status: false,
+            content: "This section covers the basics of algebra, including algebraic expressions and equations.",
+            equation: "x + (y + z) = (x + y) + z",
+            example: ["3+(4+5)=(3+4)+5", "3+9=7+5", "12=12"],
+            exercise: {
+              title:"Practice algebraic expressions and equations",
+              description: "Solve the following equations",
+              questions: 
+                {
+                  id: "q1",
+                  question: "Solve for x: 2x + 5 = 11",
+                  answer: "3",
+                  explanation: "To solve for x, subtract 5 from both sides of the equation and th",
+                  status: false,
+            },}
+            
+          },
+          {
+            title: "Practice",
+            id: "practice-1",
+            exercise: {
+              title:"Practice algebraic expressions and equations",
+              description: "Solve the following equations",
+              questions: 
+                {
+                  id: "q1",
+                  question: "Solve for x: 2x + 5 = 11",
+                  answer: "3",
+                  explanation: "To solve for x, subtract 5 from both sides of the equation and th",
+                  status: false,
+            },
+          },
+              
+            status: false,
+            content: "This section provides practice exercises for algebraic expressions and equations.",
+            equation: "x + (y + z) = (x + y) + z",
+            
+
           },
           {
             title: "Solving Equations",
             id: "solve-1", 
             exercise: "Practice solving linear equations",
-            status: false
+            status: false,
+            content: "This section covers the basics of solving linear equations.",
           },
           {
             title: "Practice Problems",
             id: "practice-1",
             exercise: "Work through sample algebra problems",
-            status: false
-          }
+            status: false,
+            content: "This section provides practice problems to apply the concepts learned.",
+          },
         ],
-        lessonTags: ["algebra", "math", "equations"],
-        lessonsImgURL: "/",
-        lessonSubject: "Mathematics",
-        lessonQwastions: ["What is algebra?", "How do we solve basic equations?", "What are common algebra problems?"]
       },
       {
         lessonId: "math2",
         lessonTitle: "Geometry Fundamentals",
         lessonDescription: "Exploring basic concepts in geometry, including shapes and angles.",
         lessonLongTime: "60 minutes",
+        lessonType: true,
         lessonSections: [
           {
             title: "Shapes",
             id: "shapes-1",
             exercise: "Learn about geometric shapes",
-            status: false
+            status: false,
+            content: "This section covers the basic geometric shapes.",
           },
           {
             title: "Angles",
             id: "angles-1",
             exercise: "Understanding angles",
-            status: false
+            status: false,
+            content: "This section explains the concept of angles in geometry.",
           },
           {
             title: "Pythagorean Theorem",
             id: "pythag-1",
             exercise: "Working with the Pythagorean theorem",
-            status: false
-          }
+            status: false,
+            content: "This section covers the Pythagorean theorem and its applications.",
+          },
         ],
         lessonTags: ["geometry", "shapes", "angles"],
         lessonsImgURL: "/",
@@ -76,25 +119,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Trigonometry Introduction",
         lessonDescription: "Understanding basic trigonometric functions and their applications.",
         lessonLongTime: "45 minutes",
+        lessonType: true,
         lessonSections: [
           {
             title: "Sine",
             id: "sine-1",
             exercise: "Understanding sine function",
-            status: false
+            status: false,
+            content: "This section explains the sine function and its applications.",
           },
           {
             title: "Cosine",
             id: "cosine-1",
             exercise: "Understanding cosine function",
-            status: false
+            status: false,
+            content: "This section explains the cosine function and its applications.",
           },
           {
             title: "Tangent",
             id: "tangent-1",
             exercise: "Understanding tangent function",
-            status: false
-          }
+            status: false,
+            content: "This section explains the tangent function and its applications.",
+          },
         ],
         lessonTags: ["trigonometry", "math", "functions"],
         lessonsImgURL: "/",
@@ -116,24 +163,28 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Ancient Civilizations",
         lessonDescription: "A look into the ancient civilizations and their cultures.",
         lessonLongTime: "45 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Mesopotamia",
             id: "meso-1",
             exercise: "Study Mesopotamian civilization",
-            status: false
+            status: false,
+            content: "This section covers the history and culture of Mesopotamia.",
           },
           {
             title: "Egypt",
             id: "egypt-1",
             exercise: "Learn about ancient Egypt",
-            status: false
+            status: false,
+            content: "This section covers the history and culture of ancient Egypt.",
           },
           {
             title: "Greece",
             id: "greece-1",
             exercise: "Explore ancient Greece",
-            status: false
+            status: false,
+            content: "This section covers the history and culture of ancient Greece.",
           }
         ],
         lessonTags: ["history", "civilizations", "culture"],
@@ -146,24 +197,28 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "World War II",
         lessonDescription: "Study of the major events and impacts of World War II.",
         lessonLongTime: "60 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Causes",
             id: "causes-1",
             exercise: "Understanding the causes of WWII",
-            status: false
+            status: false,
+            content: "This section explores the causes of World War II.",
           },
           {
             title: "Major Battles",
             id: "battles-1",
             exercise: "Study major WWII battles",
-            status: false
+            status: false,
+            content: "This section covers some of the major battles of World War II.",
           },
           {
             title: "Outcomes",
             id: "outcomes-1",
             exercise: "Analyze WWII outcomes",
-            status: false
+            status: false,
+            content: "This section analyzes the outcomes of World War II.",
           }
         ],
         lessonTags: ["world war", "history", "war"],
@@ -176,25 +231,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Renaissance",
         lessonDescription: "Exploring the key events and figures of the Renaissance period.",
         lessonLongTime: "45 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Humanism",
             id: "human-1",
             exercise: "Study Renaissance humanism",
-            status: false
+            status: false,
+            content: "This section explores the concept of humanism during the Renaissance.",
           },
           {
             title: "Art",
             id: "art-1",
             exercise: "Explore Renaissance art",
-            status: false
+            status: false,
+            content: "This section covers some of the notable art movements of the Renaissance.",
           },
           {
             title: "Science",
             id: "science-1",
             exercise: "Learn about Renaissance science",
-            status: false
-          }
+            status: false,
+            content: "This section covers some of the scientific advancements of the Renaissance.",
+          },
         ],
         lessonTags: ["history", "renaissance", "culture"],
         lessonsImgURL: "/",
@@ -216,25 +275,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Basic Physics",
         lessonDescription: "Introduction to basic physics concepts such as motion and force.",
         lessonLongTime: "45 minutes",
+        lessonType: true,
         lessonSections: [
           {
             title: "Motion",
             id: "motion-1",
             exercise: "Study motion concepts",
-            status: false
+            status: false,
+            content: "This section covers the basics of motion in physics.",
           },
           {
             title: "Forces",
             id: "forces-1",
             exercise: "Learn about forces",
-            status: false
+            status: false,
+            content: "This section explains the concept of forces in physics.",
           },
           {
             title: "Energy",
             id: "energy-1",
             exercise: "Understand energy concepts",
-            status: false
-          }
+            status: false,
+            content: "This section covers the concept of energy in physics.",
+          },
         ],
         lessonTags: ["physics", "science", "motion"],
         lessonsImgURL: "/",
@@ -246,25 +309,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Chemistry Fundamentals",
         lessonDescription: "Exploring basic chemical reactions and the periodic table.",
         lessonLongTime: "60 minutes",
+        lessonType: true,
         lessonSections: [
           {
             title: "Chemical Reactions",
             id: "chem-1",
             exercise: "Study chemical reactions",
-            status: false
+            status: false,
+            content: "This section covers the basics of chemical reactions.",
           },
           {
             title: "Periodic Table",
             id: "periodic-1",
             exercise: "Learn the periodic table",
-            status: false
+            status: false,
+            content: "This section covers the periodic table of elements.",
           },
           {
             title: "Atoms",
             id: "atoms-1",
             exercise: "Understand atomic structure",
-            status: false
-          }
+            status: false,
+            content: "This section explains the structure of atoms.",
+          },
         ],
         lessonTags: ["chemistry", "science", "reactions"],
         lessonsImgURL: "/",
@@ -276,25 +343,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Biology Basics",
         lessonDescription: "An introduction to basic biological concepts like cells and organisms.",
         lessonLongTime: "45 minutes",
+        lessonType: true,
         lessonSections: [
           {
             title: "Cells",
             id: "cells-1",
             exercise: "Study cell structure",
-            status: false
+            status: false,
+            content: "This section covers the structure of cells.",
           },
           {
             title: "Genetics",
             id: "genetics-1",
             exercise: "Learn about genetics",
-            status: false
+            status: false,
+            content: "This section explains the concept of genetics.",
           },
           {
             title: "Human Anatomy",
             id: "anatomy-1",
             exercise: "Explore human anatomy",
-            status: false
-          }
+            status: false,
+            content: "This section covers the structure and function of the human body.",
+          },
         ],
         lessonTags: ["biology", "science", "cells"],
         lessonsImgURL: "/",
@@ -316,25 +387,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Grammar Essentials",
         lessonDescription: "Learning the basic grammar rules and sentence structures.",
         lessonLongTime: "45 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Parts of Speech",
             id: "speech-1",
             exercise: "Learn parts of speech",
-            status: false
+            status: false,
+            content: "This section covers the different parts of speech.",
           },
           {
             title: "Sentence Structure",
             id: "sentence-1",
             exercise: "Study sentence structure",
-            status: false
+            status: false,
+            content: "This section explains the structure of sentences.",
           },
           {
             title: "Punctuation",
             id: "punct-1",
             exercise: "Master punctuation",
-            status: false
-          }
+            status: false,
+            content: "This section covers common punctuation marks.",
+          },
         ],
         lessonTags: ["grammar", "english", "language"],
         lessonsImgURL: "/",
@@ -346,25 +421,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Literature Analysis",
         lessonDescription: "Introduction to analyzing literary works and their themes.",
         lessonLongTime: "60 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Reading Comprehension",
             id: "reading-1",
             exercise: "Practice reading comprehension",
-            status: false
+            status: false,
+            content: "This section helps you practice reading and understanding texts.",
           },
           {
             title: "Themes",
             id: "themes-1",
             exercise: "Analyze literary themes",
-            status: false
+            status: false,
+            content: "This section covers the concept of themes in literature.",
           },
           {
             title: "Character Analysis",
             id: "character-1",
             exercise: "Study character development",
-            status: false
-          }
+            status: false,
+            content: "This section covers the analysis of character development in literature.",
+          },
         ],
         lessonTags: ["literature", "analysis", "english"],
         lessonsImgURL: "/",
@@ -376,25 +455,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Creative Writing",
         lessonDescription: "Exploring the art of storytelling and creative expression through writing.",
         lessonLongTime: "45 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Narrative Techniques",
             id: "narrative-1",
             exercise: "Learn narrative techniques",
-            status: false
+            status: false,
+            content: "This section covers various narrative techniques.",
           },
           {
             title: "Character Development",
             id: "chardev-1",
             exercise: "Develop characters",
-            status: false
+            status: false,
+            content: "This section covers the development of characters in storytelling.",
           },
           {
             title: "Plot Structure",
             id: "plot-1",
             exercise: "Create plot structure",
-            status: false
-          }
+            status: false,
+            content: "This section covers the structure of a plot.",
+          },
         ],
         lessonTags: ["writing", "creativity", "english"],
         lessonsImgURL: "/",
@@ -416,31 +499,36 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Physical Fitness and Exercise Techniques",
         lessonDescription: "An introduction to physical fitness and exercise techniques.",
         lessonLongTime: "45 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Warm-up",
             id: "warmup-1",
             exercise: "Learn warm-up exercises",
-            status: false
+            status: false,
+            content: "This section covers warm-up exercises for physical activities.",
           },
           {
             title: "Cardio",
             id: "cardio-1",
             exercise: "Practice cardio exercises",
-            status: false
+            status: false,
+            content: "This section covers cardio exercises for improving heart health.",
           },
           {
             title: "Strength Training",
             id: "strength-1",
             exercise: "Learn strength training",
-            status: false
+            status: false,
+            content: "This section covers strength training techniques.",
           },
           {
             title: "Cool-down",
             id: "cooldown-1",
             exercise: "Practice cool-down exercises",
-            status: false
-          }
+            status: false,
+            content: "This section covers cool-down exercises after physical activities.",
+          },
         ],
         lessonTags: ["PE", "fitness", "exercise"],
         lessonsImgURL: "/",
@@ -452,31 +540,36 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Team Sports",
         lessonDescription: "Learning the rules and techniques of popular team sports.",
         lessonLongTime: "60 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Football",
             id: "football-1",
             exercise: "Learn football basics",
-            status: false
+            status: false,
+            content: "This section covers the basics of playing football.",
           },
           {
             title: "Basketball",
             id: "basketball-1",
             exercise: "Practice basketball",
-            status: false
+            status: false,
+            content: "This section covers the basics of playing basketball.",
           },
           {
             title: "Volleyball",
             id: "volleyball-1",
             exercise: "Learn volleyball",
-            status: false
+            status: false,
+            content: "This section covers the basics of playing volleyball.",
           },
           {
             title: "Teamwork",
             id: "teamwork-1",
             exercise: "Develop teamwork skills",
-            status: false
-          }
+            status: false,
+            content: "This section covers the importance of teamwork in sports.",
+          },
         ],
         lessonTags: ["PE", "sports", "teamwork"],
         lessonsImgURL: "/",
@@ -488,25 +581,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Health and Nutrition",
         lessonDescription: "Understanding the basics of maintaining a healthy lifestyle.",
         lessonLongTime: "45 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Nutrition",
             id: "nutrition-1",
             exercise: "Learn about nutrition",
-            status: false
+            status: false,
+            content: "This section covers the basics of nutrition.",
           },
           {
             title: "Exercise",
             id: "exercise-1",
             exercise: "Understand exercise basics",
-            status: false
+            status: false,
+            content: "This section covers the basics of exercise.",
           },
           {
             title: "Healthy Habits",
             id: "habits-1",
             exercise: "Develop healthy habits",
-            status: false
-          }
+            status: false,
+            content: "This section covers the importance of developing healthy habits.",
+          },
         ],
         lessonTags: ["health", "nutrition", "PE"],
         lessonsImgURL: "/",
@@ -528,25 +625,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Introduction to Drawing",
         lessonDescription: "Learning the basics of drawing techniques and shading.",
         lessonLongTime: "45 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Line Drawing",
             id: "line-1",
             exercise: "Practice line drawing",
-            status: false
+            status: false,
+            content: "This section covers basic line drawing techniques.",
           },
           {
             title: "Shading Techniques",
             id: "shade-1",
             exercise: "Learn shading techniques",
-            status: false
+            status: false,
+            content: "This section covers different shading techniques.",
           },
           {
             title: "Composition",
             id: "comp-1",
             exercise: "Study composition",
-            status: false
-          }
+            status: false,
+            content: "This section covers the concept of composition in art.",
+          },
         ],
         lessonTags: ["art", "drawing", "creativity"],
         lessonsImgURL: "/",
@@ -558,25 +659,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Painting Techniques",
         lessonDescription: "Exploring various painting methods, from watercolor to acrylics.",
         lessonLongTime: "60 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Watercolor",
             id: "water-1",
             exercise: "Learn watercolor techniques",
-            status: false
+            status: false,
+            content: "This section covers watercolor painting techniques.",
           },
           {
             title: "Acrylics",
             id: "acrylic-1",
             exercise: "Practice acrylic painting",
-            status: false
+            status: false,
+            content: "This section covers acrylic painting techniques.",
           },
           {
             title: "Brush Techniques",
             id: "brush-1",
             exercise: "Master brush techniques",
-            status: false
-          }
+            status: false,
+            content: "This section covers various brush techniques.",
+          },
         ],
         lessonTags: ["art", "painting", "techniques"],
         lessonsImgURL: "/",
@@ -588,25 +693,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Sculpture Basics",
         lessonDescription: "Introduction to sculpting with various materials.",
         lessonLongTime: "45 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Clay Sculpting",
             id: "clay-1",
             exercise: "Learn clay sculpting",
-            status: false
+            status: false,
+            content: "This section covers the basics of clay sculpting.",
           },
           {
             title: "Forming Techniques",
             id: "form-1",
             exercise: "Practice forming techniques",
-            status: false
+            status: false,
+            content: "This section covers various forming techniques.",
           },
           {
             title: "Finishing Touches",
             id: "finish-1",
             exercise: "Add finishing touches",
-            status: false
-          }
+            status: false,
+            content: "This section covers the process of adding finishing touches.",
+          },
         ],
         lessonTags: ["art", "sculpture", "creativity"],
         lessonsImgURL: "/",
@@ -628,25 +737,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Introduction to Music Theory",
         lessonDescription: "Understanding the basics of music theory, notes, and scales.",
         lessonLongTime: "45 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Notes",
             id: "notes-1",
             exercise: "Learn musical notes",
-            status: false
+            status: false,
+            content: "This section covers the different musical notes.",
           },
           {
             title: "Scales",
             id: "scales-1",
             exercise: "Practice scales",
-            status: false
+            status: false,
+            content: "This section covers the concept of scales in music.",
           },
           {
             title: "Intervals",
             id: "intervals-1",
             exercise: "Study intervals",
-            status: false
-          }
+            status: false,
+            content: "This section covers the concept of intervals in music.",
+          },
         ],
         lessonTags: ["music", "theory", "learning"],
         lessonsImgURL: "/",
@@ -658,25 +771,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Basic Instrumental Skills",
         lessonDescription: "Learning the fundamental techniques for playing instruments.",
         lessonLongTime: "60 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Guitar",
             id: "guitar-1",
             exercise: "Learn guitar basics",
-            status: false
+            status: false,
+            content: "This section covers the basics of playing the guitar.",
           },
           {
             title: "Piano",
             id: "piano-1",
             exercise: "Practice piano",
-            status: false
+            status: false,
+            content: "This section covers the basics of playing the piano.",
           },
           {
             title: "Drums",
             id: "drums-1",
             exercise: "Study drums",
-            status: false
-          }
+            status: false,
+            content: "This section covers the basics of playing the drums.",
+          },
         ],
         lessonTags: ["music", "instruments", "skills"],
         lessonsImgURL: "/",
@@ -688,25 +805,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Choir and Vocal Techniques",
         lessonDescription: "Learning choir techniques and proper vocal exercises.",
         lessonLongTime: "45 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Breathing Techniques",
             id: "breathing-1",
             exercise: "Learn breathing techniques",
-            status: false
+            status: false,
+            content: "This section covers proper breathing techniques for singing.",
           },
           {
             title: "Pitch Control",
             id: "pitch-1",
             exercise: "Practice pitch control",
-            status: false
+            status: false,
+            content: "This section covers the concept of pitch control in singing.",
           },
           {
             title: "Vocal Harmony",
             id: "harmony-1",
             exercise: "Study vocal harmony",
-            status: false
-          }
+            status: false,
+            content: "This section covers the concept of vocal harmony.",
+          },
         ],
         lessonTags: ["music", "choir", "vocal"],
         lessonsImgURL: "/",
@@ -728,25 +849,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "Spanish Basics",
         lessonDescription: "Introduction to the Spanish language, including vocabulary and grammar.",
         lessonLongTime: "45 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Vocabulary",
             id: "vocab-1",
             exercise: "Learn Spanish vocabulary",
-            status: false
+            status: false,
+            content: "This section covers common Spanish words.",
           },
           {
             title: "Grammar",
             id: "grammar-1",
             exercise: "Study Spanish grammar",
-            status: false
+            status: false,
+            content: "This section covers the grammar rules of Spanish.",
           },
           {
             title: "Pronunciation",
             id: "pron-1",
             exercise: "Practice pronunciation",
-            status: false
-          }
+            status: false,
+            content: "This section covers proper pronunciation in Spanish.",
+          },
         ],
         lessonTags: ["language", "spanish", "vocabulary"],
         lessonsImgURL: "/",
@@ -758,25 +883,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "French for Beginners",
         lessonDescription: "Learning basic French phrases and sentence structures.",
         lessonLongTime: "60 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Vocabulary",
             id: "vocab-2",
             exercise: "Learn French vocabulary",
-            status: false
+            status: false,
+            content: "This section covers common French words.",
           },
           {
             title: "Sentence Structure",
             id: "sentence-2",
             exercise: "Study French sentences",
-            status: false
+            status: false,
+            content: "This section covers the structure of French sentences.",
           },
           {
             title: "Basic Conversation",
             id: "conv-2",
             exercise: "Practice conversations",
-            status: false
-          }
+            status: false,
+            content: "This section covers basic French conversations.",
+          },
         ],
         lessonTags: ["language", "french", "conversation"],
         lessonsImgURL: "/",
@@ -788,25 +917,29 @@ export const schoolSubjects: SchoolSubject[] = [
         lessonTitle: "English for ESL Students",
         lessonDescription: "Helping non-native speakers learn English grammar and vocabulary.",
         lessonLongTime: "45 minutes",
+        lessonType: false,
         lessonSections: [
           {
             title: "Grammar",
             id: "grammar-3",
             exercise: "Learn English grammar",
-            status: false
+            status: false,
+            content: "This section covers basic English grammar rules.",
           },
           {
             title: "Vocabulary",
             id: "vocab-3",
             exercise: "Build vocabulary",
-            status: false
+            status: false,
+            content: "This section covers the process of building English vocabulary.",
           },
           {
             title: "Pronunciation",
             id: "pron-3",
             exercise: "Practice pronunciation",
-            status: false
-          }
+            status: false,
+            content: "This section covers proper pronunciation in English.",
+          },
         ],
         lessonTags: ["language", "english", "esl"],
         lessonsImgURL: "/",

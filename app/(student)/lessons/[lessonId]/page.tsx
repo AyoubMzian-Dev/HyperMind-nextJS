@@ -1,6 +1,7 @@
 
 import React from 'react'
 import {LessonSidebar} from '@/components/lessonSidebar'
+import { LessonContent } from '@/components/lessonContent'
 
 
 
@@ -9,10 +10,12 @@ import {LessonSidebar} from '@/components/lessonSidebar'
 
 
 export default function page () {
-  
+
+
   return (
-    <main className='pt-20'>
+    <main className=' flex ml-24 h-full'>
       <LessonSidebar/>
+      <LessonContent/>
 
     </main>
   )
