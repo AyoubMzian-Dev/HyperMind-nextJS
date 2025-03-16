@@ -1,7 +1,6 @@
 'use client'
-import { Calendar, Home, Book,  CheckSquare,  } from "lucide-react"
-
-import { usePathname } from 'next/navigation';
+import { Calendar, Home, Book, CheckSquare } from "lucide-react"
+import { usePathname } from 'next/navigation'
 import {
   Sidebar,
   SidebarContent,
@@ -12,12 +11,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-
-
- 
-
-
-
 
 // Navigation menu items.
 const items = [
@@ -48,37 +41,51 @@ const items = [
   // },
 ]
 
-
-
 export function NavSideBar() {
   const pathname = usePathname();
 
-
-
   return (
-    <Sidebar side="left" variant="sidebar" className=" m-0 border-gray-800  bg-sectionsBackground">
- {/*go and fuck your self */}
- {/* done TODO fix the styling of the side bar, and fix the layout */}
+    <Sidebar side="left" variant="sidebar" className="m-0 border-gray-800 border-r bg-gray-900/50 backdrop-blur-sm">
       <SidebarContent>
-        <SidebarGroup className="mt-32 " >
-          <SidebarGroupLabel className="text-sm mb-4">Menu</SidebarGroupLabel>
+        <SidebarGroup className="mt-20">
+          <SidebarGroupLabel className="px-4 text-xs font-medium uppercase tracking-wider text-gray-400">
+            Menu
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem className={pathname === item.url ? 'bg-specialColor  text-accent' : '' }  key={item.title}>
-                  <SidebarMenuButton className="rounded-md hover:bg-primary my-1 hover:border-[2px] hover:border-solid hover:border-green-500" asChild>
-                    <a href={item.url} >
-                      <item.icon className={"w-4 text-2xl"}/>
-                      <span className={"text-base mx-2"}>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {items.map((item) => {
+                const isActive = pathname === item.url
+                return (
+                  <SidebarMenuItem 
+                    key={item.title}
+                    className={`my-1 mx-2 rounded-lg transition-colors ${
+                      isActive ? 'bg-gray-800/50' : 'hover:bg-gray-800/30'
+                    }`}
+                  >
+                    <SidebarMenuButton asChild>
+                      <a 
+                        href={item.url} 
+                        className="flex items-center gap-3 px-4 py-2"
+                      >
+                        <item.icon 
+                          className={`h-4 w-4 ${
+                            isActive ? 'text-green-500' : 'text-gray-400'
+                          }`}
+                        />
+                        <span className={`text-sm ${
+                          isActive ? 'font-medium text-white' : 'text-gray-400'
+                        }`}>
+                          {item.title}
+                        </span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                )
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-        
       </SidebarContent>
     </Sidebar>
-  );
+  )
 }

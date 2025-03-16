@@ -2,17 +2,25 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from './ui/button'
+import { ObjectId } from 'mongodb'
 
-export default function StartButton({ children }: { children: object }) {
+interface StartButtonProps {
+    children: ObjectId;
+    className?: string;
+}
 
+export default function StartButton({ children, className }: StartButtonProps) {
     const router = useRouter()
-    const handleStartLesson = (lessonId: string) => {
-
-    router.push(`/lessons/${lessonId}`)
+    const handleStartLesson = (lessonId: ObjectId) => {
+        router.push(`/lessons/${lessonId.toString()}`)
     }
 
-
-  return (
-    <Button className="w-20 bg-specialColor hover:bg-specialColorHover" onClick={() => handleStartLesson(children)}>Start</Button>
-  )
+    return (
+        <Button 
+            className={className} 
+            onClick={() => handleStartLesson(children)}
+        >
+            Start
+        </Button>
+    )
 }

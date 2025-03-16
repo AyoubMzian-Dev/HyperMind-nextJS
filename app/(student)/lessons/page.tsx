@@ -1,21 +1,14 @@
 import LessonsCard from "@/components/lessonsCard"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { defaultTabValue } from "@/lib/fakeData"
-
+import LessonOvervew from "@/components/lessonOvervew"
 import React from 'react'
 import {
   AlertDialog,
-
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import Image from "next/image"
-import StartButton from "@/components/startButton"
+
+
 import { SubjectSchema } from "@/schemas/subject"
 import { Lesson } from "@/schemas/lessons"
 
@@ -47,7 +40,7 @@ async function getSubjects() {
   return res.json();
 }
 
-const imgURL = "ww2.kqed.org/app/uploads/sites/23/2018/03/iStock-471301626-1180x1180.jpg"
+// const imgURL = "ww2.kqed.org/app/uploads/sites/23/2018/03/iStock-471301626-1180x1180.jpg"
 
 
 
@@ -58,23 +51,24 @@ const lessons:[Lesson] = await getLessons()
 console.log(lessons, subjects)
 
   return (
-    <main className={"lg:g-[calc(100%-4rem)] mt-20"}>
+    <main className={"h-[calc(100%-4rem)] w-full mt-20"}>
       {/* the lessons list based on the subject  */}
-      <Tabs defaultValue={defaultTabValue} className="w-full mt-2 flex flex-col" >
+      <Tabs defaultValue={defaultTabValue} className="w-full my-1  flex flex-col" >
         {/* the header section for all the subjects */}
-        <TabsList className="bg-black  ">
+        <TabsList className="bg-sectionsBackground px-3 ">
           {subjects.map((subject, index) => (
-            <TabsTrigger key={index} value={subject.title} className="px-6 py-2.5" >{subject.title}</TabsTrigger>
+            <TabsTrigger  key={index} value={subject.title} className={ "px-6 py-2 data-[state=active]:bg-gray-800 hover:border-green-800 border-gray-800"} >{subject.title}</TabsTrigger>
           ))}
         </TabsList>
         {/* the content section for all the subjects  */}
         {subjects.map((subject, index) => (
-          <TabsContent key={index} value={subject.title}>
+          <TabsContent key={index} value={subject.title} className={"mx-3"}>
 
             {lessons.filter(lesson => lesson.subject === subject.title).map((lesson, index) => (
               <AlertDialog key={index}>
-                <AlertDialogTrigger className="h-36 w-2/3 my-6 mx-3">
+                <AlertDialogTrigger className="lg:w-3/4 ">
                   <LessonsCard
+                    className={"bg-gray-900"}
                     lessonType={lesson.type}
                     lessonId={lesson.id}
                     lessonTitle={lesson.title}
@@ -87,47 +81,10 @@ console.log(lessons, subjects)
                     lessonQwastions={lesson.questions}
                   />
                 </AlertDialogTrigger>
-
-                <AlertDialogContent >
-                  <div className="h-full w-full flex">
-                  {/* left side */}
-                  <AlertDialogHeader className="felx border-r-2 pr-6 h-[100%] flex-col max-w-[50%]">
-                    <AlertDialogTitle className="text-xl">{lesson.title}</AlertDialogTitle>
-                    <Image 
-                      src={lesson.imgURL || ""}
-                      alt={`${lesson.title} thumbnail`}
-                      className='bg-componentBg rounded-lg'
-                      height={300}
-                      width={500}
-                      priority
-                    />
-                    <AlertDialogDescription>{lesson.description}</AlertDialogDescription>
-                  </AlertDialogHeader>
-
-                  {/* right side */}
-                  <div className="py-2 px-8">
-                    <h1 className="text-xl font-bold mb-4">Some questions will be answered</h1>
-                    <ul className="flex flex-col ">
-                      {
-                        lesson.questions.map((Qwastion, index) => (
-                          <li className="text-base font-bold my-2" key={index}>{++index}- {Qwastion}</li>
-                        ))}
-                    </ul>
-                    
-
-                  </div>
-                  </div>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel className="border-specialColor hover:bg-darkSpecialColor hover:text-white">Cancel</AlertDialogCancel>
-                    <StartButton>{lesson.id}</StartButton>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
+                <LessonOvervew {...lesson} />
               </AlertDialog>
             ))}
 
-            {/*
-             right side bar with chart that shows the progress in user scoor on each lesson
-            */}
           </TabsContent>
         ))}
 

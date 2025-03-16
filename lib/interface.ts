@@ -1,4 +1,5 @@
 export interface Lesson {
+  className: string;
   lessonId: object;               // Unique identifier for the lesson
   lessonTitle: string;            // Title of the lesson
   lessonDescription: string;      // Short description of the lesson content
