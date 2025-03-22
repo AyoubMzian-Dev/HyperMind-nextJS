@@ -2,15 +2,26 @@ import { NextResponse } from 'next/server'
 import { connectToDatabase } from '@/lib/mongodb'
 import { TaskModel } from '@/models/task'
 
-// Fixed signature for DELETE request handler in App Router
-export async function DELETE(
-  request: Request,
-  { params }: { params: { taskId: string } }
-) {
-  // Access route parameters via params
+/**
+ * DELETE handler for task deletion
+ * Uses URL structure to extract the taskId parameter
+ */
+export async function DELETE(request: Request) {
   try {
     await connectToDatabase()
-    const taskId = parseInt(params.taskId)
+    
+    // Extract taskId from URL
+    const url = new URL(request.url)
+    const pathSegments = url.pathname.split('/')
+    const taskIdStr = pathSegments[pathSegments.length - 1]
+    const taskId = parseInt(taskIdStr)
+    
+    if (isNaN(taskId)) {
+      return NextResponse.json(
+        { error: 'Invalid task ID' },
+        { status: 400 }
+      )
+    }
     
     const deletedTask = await TaskModel.findOneAndDelete({ taskId })
     
