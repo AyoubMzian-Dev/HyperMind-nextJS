@@ -1,6 +1,6 @@
 import LessonsCard from "@/components/lessonsCard"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { defaultTabValue } from "@/lib/fakeData"
+
 import LessonOvervew from "@/components/lessonOvervew"
 import React from 'react'
 import {
@@ -41,28 +41,28 @@ async function getSubjects() {
 }
 
 // const imgURL = "ww2.kqed.org/app/uploads/sites/23/2018/03/iStock-471301626-1180x1180.jpg"
-
+const defaultTabValue:string = "Mathematics"
 
 
 export default async function page() {
 
 const subjects:[SubjectSchema]  = await getSubjects()
 const lessons:[Lesson] = await getLessons()
-console.log(lessons, subjects)
+console.log(defaultTabValue)
 
   return (
     <main className={"h-[calc(100%-4rem)] w-full mt-20"}>
       {/* the lessons list based on the subject  */}
-      <Tabs defaultValue={defaultTabValue} className="w-full my-1  flex flex-col" >
+      <Tabs defaultValue={defaultTabValue} className="w-full justify-center items-center  flex flex-col" >
         {/* the header section for all the subjects */}
-        <TabsList className="bg-sectionsBackground px-3 ">
+        <TabsList className="bprder-solid border-[1px] w-[90%]  border-gray-900 py-6 ">
           {subjects.map((subject, index) => (
-            <TabsTrigger  key={index} value={subject.title} className={ "px-6 py-2 data-[state=active]:bg-gray-800 hover:border-green-800 border-gray-800"} >{subject.title}</TabsTrigger>
+            <TabsTrigger  key={index} value={subject.title} className={ " py-2 data-[state=active]:bg-gray-800 hover:border-green-800 border-gray-800"} >{subject.title}</TabsTrigger>
           ))}
         </TabsList>
         {/* the content section for all the subjects  */}
         {subjects.map((subject, index) => (
-          <TabsContent key={index} value={subject.title} className={"mx-3"}>
+          <TabsContent key={index} value={subject.title} className={"w-full mt-8 px-4"}>
 
             {lessons.filter(lesson => lesson.subject === subject.title).map((lesson, index) => (
               <AlertDialog key={index}>

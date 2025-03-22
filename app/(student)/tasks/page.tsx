@@ -1,350 +1,196 @@
-import React from 'react'
-import { TaskCard } from '@/components/taskCard'
-import TaskOprationBar from '@/components/taskOprationBar'
+'use client'
 
+import { useState, useEffect } from "react"
+import { TaskCard } from "@/components/taskCard"
+import { NewTaskForm } from "@/components/newTaskForm"
+import { Task } from "@/types/task"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Search, Filter, Plus } from "lucide-react"
+import { toast } from "sonner"
 
+export default function TasksPage() {
+  const [searchQuery, setSearchQuery] = useState("")
+  const [tasks, setTasks] = useState<Task[]>([])
+  const [isNewTaskFormOpen, setIsNewTaskFormOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
+  // Fetch tasks on component mount
+  useEffect(() => {
+    fetchTasks()
+  }, [])
 
-const tasksData = [
-  {
-    taskTitle: "Complete Science Project",
-    taskDescription: "Conduct research and complete the science project on the assigned topic.",
-    taskDueDate: "12-28",
-    taskStatus: true,
-    taskDueTime: "3 hours",
-    taskTags: ["science", "project"],
-    taskType: "project",
-    taskId: 123,
-    taskSubject: "Science",
-    taskSteps: [
-      {
-        stepId: 1,
-        stepTitle: "Step 1",
-        stepState: false
-      },
-      {
-        stepId: 2,
-        stepTitle: "Step 2",
-        stepState: true
-      },
-      {
-        stepId: 3,
-        stepTitle: "Step 3",
-        stepState: true
-      }
-    ],
-    taskCreatedDate: "12-01",
-    taskStepsCompelted: 2,
-    taskAttachments: [
-      {
-        id: 1,
-        name: "file1.pdf",
-        description: "this is a test file",
-        url: 'linkTest.com'
-      },
-      {
-        id: 2,
-        name: "file2.pdf",
-        description: "another test file",
-        url: 'linkTest2.com'
-      }
-    ],
-    taskLinks: [
-      {
-        id: 1,
-        title: "link1",
-        url: 'linkTest.com'
-      },
-      {
-        id: 2,
-        title: "link2",
-        url: 'linkTest2.com'
-      }
-    ],
-  },
-  {
-    taskTitle: "Math Homework",
-    taskDescription: "Complete the math homework exercises from chapter 5.",
-    taskDueDate: "12-30",
-    taskStatus: false,
-    taskDueTime: "1 hour",
-    taskTags: ["math", "homework"],
-    taskType: "homework",
-    taskId: 124,
-    taskSubject: "Math",
-    taskSteps: [
-      {
-        stepId: 1,
-        stepTitle: "Solve Equations",
-        stepState: false
-      },
-      {
-        stepId: 2,
-        stepTitle: "Graph Functions",
-        stepState: false
-      }
-    ],
-    taskCreatedDate: "12-02",
-    taskStepsCompelted: 1,
-    taskAttachments: [
-      {
-        id: 1,
-        name: "math_notes.pdf",
-        description: "notes for math homework",
-        url: 'math_notes.com'
-      }
-    ],
-    taskLinks: [
-      {
-        id: 1,
-        title: "math_help",
-        url: 'math_help.com'
-      }
-    ],
-  },
-  {
-    taskTitle: "Finish English Essay",
-    taskDescription: "Write a well-structured essay on the assigned topic in English class.",
-    taskDueDate: "12-25",
-    taskStatus: false,
-    taskDueTime: "2 hours",
-    taskTags: ["english", "essay"],
-    taskType: "essay",
-    taskId: 125,
-    taskSubject: "English",
-    taskSteps: [
-      {
-        stepId: 1,
-        stepTitle: "Outline",
-        stepState: false
-      },
-      {
-        stepId: 2,
-        stepTitle: "Write",
-        stepState: false
-      },
-      {
-        stepId: 3,
-        stepTitle: "Edit",
-        stepState: false
-      }
-    ],
-    taskCreatedDate: "12-02",
-    taskStepsCompelted: 1,
-    taskAttachments: [
-      {
-        id: 1,
-        name: "english_attachment.pdf",
-        description: "additional materials for essay",
-        url: 'english_attachment.com'
-      }
-    ],
-    taskLinks: [
-      {
-        id: 1,
-        title: "english_resources",
-        url: 'english_resources.com'
-      }
-    ],
-  },
-  {
-    taskTitle: "Practice Piano for 30 minutes",
-    taskDescription: "Practice playing the piano for 30 minutes to improve skills.",
-    taskDueDate: "12-24",
-    taskStatus: true,
-    taskDueTime: "30 minutes",
-    taskTags: ["music", "practice"],
-    taskType: "practice",
-    taskId: 126,
-    taskSubject: "Music",
-    taskSteps: [
-      {
-        stepId: 1,
-        stepTitle: "Warm-up",
-        stepState: false
-      },
-      {
-        stepId: 2,
-        stepTitle: "Practice scales",
-        stepState: false
-      },
-      {
-        stepId: 3,
-        stepTitle: "Play a song",
-        stepState: false
-      }
-    ],
-    taskCreatedDate: "12-03",
-    taskStepsCompelted: 0,
-    taskAttachments: [
-      {
-        id: 1,
-        name: "piano_sheet.pdf",
-        description: "sheet music for practice",
-        url: 'piano_sheet.com'
-      }
-    ],
-    taskLinks: [
-      {
-        id: 1,
-        title: "music_tips",
-        url: 'music_tips.com'
-      }
-    ],
-  },
-  {
-    taskTitle: "Complete History Homework",
-    taskDescription: "Complete the assigned homework in History class.",
-    taskDueDate: "12-23",
-    taskStatus: false,
-    taskDueTime: "1 hour",
-    taskTags: ["history", "homework"],
-    taskType: "homework",
-    taskId: 127,
-    taskSubject: "History",
-    taskSteps: [
-      {
-        stepId: 1,
-        stepTitle: "Read chapter",
-        stepState: false
-      },
-      {
-        stepId: 2,
-        stepTitle: "Answer questions",
-        stepState: false
-      }
-    ],
-    taskCreatedDate: "12-04",
-    taskStepsCompelted: 0,
-    taskAttachments: [
-      {
-        id: 1,
-        name: "history_notes.pdf",
-        description: "notes for history homework",
-        url: 'history_notes.com'
-      }
-    ],
-    taskLinks: [
-      {
-        id: 1,
-        title: "history_help",
-        url: 'history_help.com'
-      }
-    ],
-  },
-  {
-    taskTitle: "Read Chapter 5 in Biology",
-    taskDescription: "Read and take notes on Chapter 5 in Biology class.",
-    taskDueDate: "12-22",
-    taskStatus: true,
-    taskDueTime: "1 hour",
-    taskTags: ["biology", "reading"],
-    taskType: "reading",
-    taskId: 128,
-    taskSubject: "Biology",
-    taskSteps: [
-      {
-        stepId: 1,
-        stepTitle: "Read text",
-        stepState: false
-      },
-      {
-        stepId: 2,
-        stepTitle: "Take notes",
-        stepState: false
-      }
-    ],
-    taskCreatedDate: "12-05",
-    taskStepsCompelted: 1,
-    taskAttachments: [
-      {
-        id: 1,
-        name: "biology_notes.pdf",
-        description: "notes for biology reading",
-        url: 'biology_notes.com'
-      }
-    ],
-    taskLinks: [
-      {
-        id: 1,
-        title: "biology_resources",
-        url: 'biology_resources.com'
-      }
-    ],
-  },
-  {
-    taskTitle: "Work on Group Project",
-    taskDescription: "Collaborate with group members to work on the assigned project.",
-    taskDueDate: "12-21",
-    taskStatus: false,
-    taskDueTime: "2 hours",
-    taskTags: ["group", "project"],
-    taskType: "project",
-    taskId: 129,
-    taskSubject: "Project",
-    taskSteps: [
-      {
-        stepId: 1,
-        stepTitle: "Discuss ideas",
-        stepState: false
-      },
-      {
-        stepId: 2,
-        stepTitle: "Assign roles",
-        stepState: false
-      },
-      {
-        stepId: 3,
-        stepTitle: "Create presentation",
-        stepState: false
-      }
-    ],
-    taskCreatedDate: "12-06",
-    taskStepsCompelted: 0,
-    taskAttachments: [
-      {
-        id: 1,
-        name: "group_project.pdf",
-        description: "materials for group project",
-        url: 'group_project.com'
-      }
-    ],
-    taskLinks: [
-      {
-        id: 1,
-        title: "group_project_resources",
-        url: 'group_project_resources.com'
-      }
-    ],
-  },]
+  const fetchTasks = async () => {
+    try {
+      setIsLoading(true)
+      const response = await fetch('/api/tasks')
+      if (!response.ok) throw new Error('Failed to fetch tasks')
+      const data = await response.json()
+      setTasks(data)
+    } catch (error) {
+      console.error('Error fetching tasks:', error)
+      toast.error('Error loading tasks. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
+  const handleTaskUpdate = (updatedTask: Task) => {
+    if (updatedTask.deleted) {
+      setTasks(tasks.filter(task => task.taskId !== updatedTask.taskId))
+    } else {
+      setTasks(tasks.map(task => 
+        task.taskId === updatedTask.taskId ? updatedTask : task
+      ))
+    }
+  }
 
+  const handleCreateTask = async (taskData: Omit<Task, 'taskId' | 'taskStatus' | 'taskCreatedDate'>) => {
+    try {
+      // Only validate title
+      if (!taskData.taskTitle) {
+        throw new Error('Task title is required');
+      }
 
-export default function page() {
+      // Prepare task data with optional fields
+      const taskToCreate = {
+        taskTitle: taskData.taskTitle,
+        taskDescription: taskData.taskDescription || '',
+        taskSubject: taskData.taskSubject || '',
+        taskType: taskData.taskType || 'ASSIGNMENT', // Default type
+        taskDueDate: taskData.taskDueDate || '',
+        taskDueTime: taskData.taskDueTime || '',
+        taskTags: taskData.taskTags || [],
+        taskSteps: taskData.taskSteps || [],
+        taskAttachments: taskData.taskAttachments || [],
+        taskLinks: taskData.taskLinks || []
+      }
+
+      const response = await fetch('/api/tasks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(taskToCreate),
+      })
+
+      // Log the response status for debugging
+      console.log('Response status:', response.status);
+
+      if (!response.ok) {
+        // Get the raw text of the response first
+        const rawResponse = await response.text();
+        console.log('Raw error response:', rawResponse);
+
+        let errorMessage = 'Failed to create task';
+        
+        // Try to parse it as JSON if it's not empty
+        if (rawResponse) {
+          try {
+            const errorData = JSON.parse(rawResponse);
+            errorMessage = errorData.error || 'Server returned an error';
+          } catch {
+            errorMessage = `Server error: ${rawResponse}`;
+          }
+        } else {
+          errorMessage = `Server returned ${response.status}: ${response.statusText}`;
+        }
+
+        toast.error(errorMessage);
+        throw new Error(errorMessage);
+      }
+
+      const newTask = await response.json();
+      
+      // Validate the returned task data
+      if (!newTask.taskId) {
+        throw new Error('Server returned invalid task data');
+      }
+
+      setTasks(prev => [...prev, newTask]);
+      toast.success('Task created successfully!');
+      return newTask;
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      console.error('Task creation failed:', errorMessage);
+      toast.error(errorMessage);
+      throw error;
+    }
+  }
+
+  const handleDeleteTask = (taskId: number) => {
+    // Remove the task from the local state
+    setTasks(prevTasks => prevTasks.filter(task => task.taskId !== taskId))
+  }
+
+  const filteredTasks = tasks.filter(task =>
+    task.taskTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    task.taskDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    task.taskSubject.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    task.taskTags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+  )
+
   return (
-    <div className='flex flex-col'>
-      <TaskOprationBar/>
-      <section className="flex flex-wrap justify-center">
-        {tasksData.map((task) => (
+    <div className="min-h-screen mt-10 text-slate-50 p-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold mb-4 md:mb-0">My Tasks</h1>
+          <div className="flex items-center space-x-4">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
+              <Input
+                type="text"
+                placeholder="Search tasks..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 bg-slate-800 border-slate-700 text-slate-50 placeholder:text-slate-400 focus:ring-blue-500"
+              />
+            </div>
+            <Button variant="outline" className="bg-slate-800 border-slate-700 hover:bg-slate-700">
+              <Filter className="w-4 h-4 mr-2" />
+              Filter
+            </Button>
+            <Button 
+              className="bg-blue-500 hover:bg-blue-600"
+              onClick={() => setIsNewTaskFormOpen(true)}
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              New Task
+            </Button>
+          </div>
+        </div>
+
+        {isLoading ? (
+          <div className="text-center py-12">
+            <p className="text-slate-400 text-lg">Loading tasks...</p>
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredTasks.map((task) => (
           <TaskCard
             key={task.taskId}
-            taskTitle={task.taskTitle}
-            taskDescription={task.taskDescription}
-            taskDueDate={task.taskDueDate}
-            taskStatus={task.taskStatus}
-            taskDueTime={task.taskDueTime}
-            taskTags={task.taskTags}
-            taskType={task.taskType}
-            taskId={task.taskId}
-            taskSubject={task.taskSubject}
-            taskSteps={task.taskSteps}
-            taskCreatedDate={task.taskCreatedDate}
-            taskStepsCompelted={task.taskStepsCompelted}
-            taskAttachments={task.taskAttachments}
-            taskLinks={task.taskLinks}
+                  task={task}
+                  onTaskUpdate={handleTaskUpdate}
+                  onDelete={handleDeleteTask}
           />
         ))}
-      </section>
+            </div>
+
+            {filteredTasks.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-slate-400 text-lg">No tasks found matching your search.</p>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+
+      <NewTaskForm
+        isOpen={isNewTaskFormOpen}
+        onClose={() => setIsNewTaskFormOpen(false)}
+        onSubmit={handleCreateTask}
+      />
     </div>
   )
 }

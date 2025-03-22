@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { dark } from '@clerk/themes'
+import { Toaster } from 'sonner'
 
 
 
@@ -44,6 +45,7 @@ export default function RootLayout({
             className={`${geistSans.variable} ${geistMono.variable} bg-gray-950 text-white antialiased`}
             >
             {children}
+            <Toaster position="top-right" richColors />
           </body>
         </ClerkProvider>
     </html>

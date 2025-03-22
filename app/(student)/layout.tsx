@@ -19,8 +19,10 @@ export default function Layout({ children }: {children: React.ReactNode}) {
           </SidebarProvider>
         )}
         <div className={`${isLessonPage ? 'w-full' : 'lg:w-[calc(100%-12rem)]'} min-h-screen`}>
-          <Header />
+          <Header/>
+          <div className="mt-12  ">
           {children}
+          </div>
         </div>
       </div>
     </main>

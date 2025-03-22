@@ -1,25 +1,37 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
 //
-const isProtectedRoute = createRouteMatcher(['/dashboard(.*)', '/admin(.*)'])
+const isProtectedRoute = createRouteMatcher([ '/admin(.*)'])
 
 export default clerkMiddleware(async (auth, req) => {
-
-
+    // Get the current path from the request
+    const path = req.nextUrl.pathname
     
-      
-
-
-    // Restrict admin routes to users with specific permissions
-    if (isProtectedRoute(req)) {
-      await auth.protect()
+    // Skip authentication for root path and sign-in page
+    if (path === '/' || path === '/sign-in') {
+        return
     }
-  },
-  () => ({
+
+    try {
+        // Protect all other routes
+        if (isProtectedRoute(req)) {
+            await auth.protect()
+        }
+    } catch (error) {
+        // Create redirect URL using NextURL for proper handling
+        const redirectUrl = req.nextUrl.clone()
+        redirectUrl.pathname = '/sign-in'
+        // Add the redirect URL as a parameter
+        redirectUrl.searchParams.set('redirect_url', req.url)
+        
+        return Response.redirect(redirectUrl)
+    }
+},
+() => ({
     // Provide options here
     signInUrl: '/sign-in',
     signUpUrl: '/sign-ip'
-  }),
+}),
 )
 
 export const config = {
