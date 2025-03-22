@@ -3,26 +3,26 @@ import { Schema, model, models, Model } from 'mongoose'
 import { Task } from '@/schemas/tasks'
 
 // Step schema
-const StepSchema = new Schema({
-  stepId: { type: Number, required: true },
-  stepTitle: { type: String, required: true },
-  stepDescription: { type: String, required: true },
-  stepCompleted: { type: Boolean, default: false }
-})
+// const StepSchema = new Schema({
+//   stepId: { type: Number, required: true },
+//   stepTitle: { type: String, required: true },
+//   stepDescription: { type: String, required: true },
+//   stepCompleted: { type: Boolean, default: false }
+// })
 
 // Attachment schema
-const AttachmentSchema = new Schema({
-  id: { type: Number, required: true },
-  name: { type: String, required: true },
-  url: { type: String, required: true }
-})
+// const AttachmentSchema = new Schema({
+//   id: { type: Number, required: true },
+//   name: { type: String, required: true },
+//   url: { type: String, required: true }
+// })
 
-// Task link schema
-const TaskLinkSchema = new Schema({
-  id: { type: Number, required: true },
-  title: { type: String, required: true },
-  url: { type: String, required: true }
-})
+// // Task link schema
+// const TaskLinkSchema = new Schema({
+//   id: { type: Number, required: true },
+//   title: { type: String, required: true },
+//   url: { type: String, required: true }
+// })
 
 // Task schema
 const TaskSchema = new Schema({
