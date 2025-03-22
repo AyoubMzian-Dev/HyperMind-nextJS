@@ -7,7 +7,7 @@ export async function GET() {
     await connectDB();
     const subjects = await Subjects.find().lean();
     return NextResponse.json(subjects, { status: 200 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch subjects" }, { status: 500 });
   }
 }

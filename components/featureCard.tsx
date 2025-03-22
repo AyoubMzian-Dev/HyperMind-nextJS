@@ -1,21 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { masterPlan } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-
-
-interface featureCardProp {
+interface FeatureCardProp {
     title: string
     description: string
-    icon?: JSX.Element
 }
-export const FeatureCard = ({icon, title, description}:featureCardProp) => {
+
+export const FeatureCard = ({title, description}: FeatureCardProp) => {
   return (
     <div>
         <FontAwesomeIcon
-
-        className="fas fa-check"
-        style={{ color: "red", fontSize: 64 }}
-      />
+          icon={faCheck}
+          className="fas"
+          style={{ color: "red", fontSize: 64 }}
+        />
         <h2>{title}</h2>
         <p>{description}</p>
     </div>

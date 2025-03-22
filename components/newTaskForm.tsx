@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Plus, Trash2, Link as LinkIcon, Paperclip } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -48,14 +48,8 @@ export function NewTaskForm({ isOpen, onClose, onSubmit }: NewTaskFormProps) {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  // Debug form state
-  useEffect(() => {
-    console.log('Form Data:', formData)
-    console.log('Is Submitting:', isSubmitting)
-    console.log('Is Form Valid:', isFormValid())
-  }, [formData, isSubmitting])
-
-  const isFormValid = () => {
+  // Memoize the isFormValid function
+  const isFormValid = useCallback(() => {
     // Only title is required
     const valid = Boolean(formData.taskTitle.trim())
     
@@ -69,8 +63,16 @@ export function NewTaskForm({ isOpen, onClose, onSubmit }: NewTaskFormProps) {
       tags: formData.taskTags.length > 0,
       steps: formData.taskSteps.length > 0
     })
+    
     return valid
-  }
+  }, [formData])
+
+  // Debug form state
+  useEffect(() => {
+    console.log('Form Data:', formData)
+    console.log('Is Submitting:', isSubmitting)
+    console.log('Is Form Valid:', isFormValid())
+  }, [formData, isSubmitting, isFormValid])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

@@ -8,7 +8,7 @@ export async function GET() {
     await connectDB();
     const users = await User.find();
     return NextResponse.json(users, { status: 200 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch students" }, { status: 500 });
   }
 }
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     const newUser = new User({ ...body, role: "student" });
     await newUser.save();
     return NextResponse.json(newUser, { status: 201 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to create student" }, { status: 500 });
   }
 }
