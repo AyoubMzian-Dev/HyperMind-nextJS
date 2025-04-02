@@ -14,7 +14,7 @@ import { Button } from './ui/button';
 
 export const LessonArtical = () => {
 
-
+  const subjects = fetch('/api/subjects')
 
     const params = useParams();
     const lessonId = params.lessonId as string;
