@@ -1,33 +1,38 @@
 import { NextResponse } from 'next/server'
-import { connectToDatabase } from '@/lib/mongodb'
 import { TaskModel } from '@/models/task'
-import { NewTaskSchema } from '@/schemas/tasks'
+import { connectDB } from '@/lib/db'
+import { DeleteTaskSchema, NewTaskSchema } from '@/schemas/tasks'
 import { ZodError } from 'zod'
+
+
 
 // GET /api/tasks - Fetch all tasks
 export async function GET() {
+
   try {
-    await connectToDatabase()
-    const tasks = await TaskModel.find({}).sort({ taskDueDate: 1 })
+    await (connectDB())
+    const tasks = await TaskModel.find()
     return NextResponse.json(tasks)
   } catch (error) {
-    console.error('Error fetching tasks:', error)
+    console.log(error)
     return NextResponse.json({ error: 'Failed to fetch tasks' }, { status: 500 })
   }
 }
+
+
 
 // POST /api/tasks - Create a new task
 export async function POST(request: Request) {
   try {
     const body = await request.json()
     console.log('Received task data:', body) // Debug log
-    
+
     // Validate request body against schema
     const validatedData = NewTaskSchema.parse(body)
     console.log('Validated data:', validatedData) // Debug log
-    
-    await connectToDatabase()
-    
+
+    await connectDB()
+
     // Generate IDs for nested arrays if they don't have them
     const taskSteps = (validatedData.taskSteps || []).map((step, index) => ({
       ...step,
@@ -44,7 +49,7 @@ export async function POST(request: Request) {
       ...link,
       id: link.id || Date.now() + index + 2000 // Offset to avoid ID conflicts
     }))
-    
+
     // Create new task with processed data
     const newTask = await TaskModel.create({
       ...validatedData,
@@ -62,12 +67,12 @@ export async function POST(request: Request) {
     return NextResponse.json(newTask, { status: 201 })
   } catch (error) {
     console.error('Error creating task:', error)
-    
+
     // Handle validation errors
     if (error instanceof ZodError) {
       return NextResponse.json(
-        { 
-          error: 'Invalid task data', 
+        {
+          error: 'Invalid task data',
           details: error.errors.map(err => ({
             path: err.path.join('.'),
             message: err.message
@@ -84,4 +89,30 @@ export async function POST(request: Request) {
       { status: 500 }
     )
   }
-} 
+}
+
+
+
+
+
+// DELETE /api/task - task by id 
+export async function DELETE(request: Request) {
+  const body = await request.json()
+
+  try {
+    const validatedData = DeleteTaskSchema.parse(body)
+    const task = await TaskModel.findOne({ taskId: validatedData.taskId }) || undefined
+
+      if(task){
+        await task.deleteOne() 
+        return NextResponse.json({ message: 'Task deleted successfully' }, { status: 200 })
+      }else{
+      return NextResponse.json({ error: `Task not found: ` }, { status: 404 })
+    }
+  } catch (err) {
+    return NextResponse.json(err, { status: 400 })
+
+  }
+
+
+}

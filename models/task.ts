@@ -75,7 +75,6 @@ const TaskSchema = new Schema({
 })
 
 // Create indexes for better query performance
-TaskSchema.index({ taskId: 1 })
 TaskSchema.index({ taskSubject: 1 })
 TaskSchema.index({ taskType: 1 })
 TaskSchema.index({ taskStatus: 1 })

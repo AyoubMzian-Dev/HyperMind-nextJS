@@ -53,6 +53,13 @@ export const NewTaskSchema = TaskSchema.omit({
   taskCreatedDate: true
 });
 
+export const DeleteTaskSchema = z.object({
+  taskId: z.number(),
+  taskTitle: z.string().min(1, 'Title is required'),
+});
+
+
+
 // Types
 export type Task = z.infer<typeof TaskSchema>;
 export type NewTask = z.infer<typeof NewTaskSchema>;

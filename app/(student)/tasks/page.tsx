@@ -9,7 +9,19 @@ import { Button } from "@/components/ui/button"
 import { Search, Filter, Plus } from "lucide-react"
 import { toast } from "sonner"
 
+
+
+
+
+
+
+
+
+
 export default function TasksPage() {
+
+
+  
   const [searchQuery, setSearchQuery] = useState("")
   const [tasks, setTasks] = useState<Task[]>([])
   const [isNewTaskFormOpen, setIsNewTaskFormOpen] = useState(false)
@@ -39,7 +51,7 @@ export default function TasksPage() {
     if (updatedTask.deleted) {
       setTasks(tasks.filter(task => task.taskId !== updatedTask.taskId))
     } else {
-      setTasks(tasks.map(task => 
+      setTasks(tasks.map(task =>
         task.taskId === updatedTask.taskId ? updatedTask : task
       ))
     }
@@ -83,7 +95,7 @@ export default function TasksPage() {
         console.log('Raw error response:', rawResponse);
 
         let errorMessage = 'Failed to create task';
-        
+
         // Try to parse it as JSON if it's not empty
         if (rawResponse) {
           try {
@@ -101,7 +113,7 @@ export default function TasksPage() {
       }
 
       const newTask = await response.json();
-      
+
       // Validate the returned task data
       if (!newTask.taskId) {
         throw new Error('Server returned invalid task data');
@@ -150,7 +162,7 @@ export default function TasksPage() {
               <Filter className="w-4 h-4 mr-2" />
               Filter
             </Button>
-            <Button 
+            <Button
               className="bg-blue-500 hover:bg-blue-600"
               onClick={() => setIsNewTaskFormOpen(true)}
             >
@@ -168,13 +180,13 @@ export default function TasksPage() {
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredTasks.map((task) => (
-          <TaskCard
-            key={task.taskId}
+                <TaskCard
+                  key={task.taskId}
                   task={task}
                   onTaskUpdate={handleTaskUpdate}
                   onDelete={handleDeleteTask}
-          />
-        ))}
+                />
+              ))}
             </div>
 
             {filteredTasks.length === 0 && (

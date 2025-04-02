@@ -19,7 +19,7 @@ import { Progress } from "./ui/progress"
 import { 
   ListCheck, 
   Clock4, 
-  CalendarArrowUp,
+  // CalendarArrowUp,
   CheckCircle2,
   CircleDashed,
 } from 'lucide-react'
@@ -111,10 +111,6 @@ export function TaskCard({ task, onTaskUpdate, onDelete }: TaskCardProps) {
                 <Badge className="text-xs text-slate-50 bg-indigo-600 hover:bg-indigo-500 transition-colors">
                   {currentTask.taskSubject}
                 </Badge>
-                <div className="flex items-center text-amber-400 text-xs">
-                  <CalendarArrowUp className="mr-1 w-3" />
-                  {currentTask.taskDueDate}
-                </div>
               </div>
               
               <CardTitle className="text-lg font-semibold text-slate-50">
