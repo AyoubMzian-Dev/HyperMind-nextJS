@@ -1,7 +1,6 @@
 "use client"
 import React, { useState } from 'react'
 import { useParams } from 'next/navigation'
-import { schoolSubjects } from '@/lib/fakeData';
 import {
     Accordion,
     AccordionContent,
