@@ -45,7 +45,7 @@ export function NavSideBar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar side="left" variant="sidebar" className="m-0 border-gray-800 border-r bg-gray-900/50 backdrop-blur-sm">
+    <Sidebar side="left" variant="sidebar" className="m-0 hidden md:flex border-gray-800 border-r bg-gray-900/50 backdrop-blur-sm">
       <SidebarContent>
         <SidebarGroup className="mt-20">
           <SidebarGroupLabel className="px-4 text-xs font-medium uppercase tracking-wider text-gray-400">

@@ -130,7 +130,7 @@ export default function TasksPage() {
     }
   }
 
-  const handleDeleteTask = (taskId: number) => {
+   async function handleDeleteTask(taskId: number){
     // Remove the task from the local state
     setTasks(prevTasks => prevTasks.filter(task => task.taskId !== taskId))
   }
@@ -141,7 +141,7 @@ export default function TasksPage() {
     task.taskSubject.toLowerCase().includes(searchQuery.toLowerCase()) ||
     task.taskTags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
   )
-
+  console.log(tasks)
   return (
     <div className="min-h-screen mt-10 text-slate-50 p-6">
       <div className="max-w-7xl mx-auto">

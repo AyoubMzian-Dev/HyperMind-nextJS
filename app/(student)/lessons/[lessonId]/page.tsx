@@ -6,29 +6,29 @@ import AIChat from '@/components/AIChat'
 
 export default function LessonPage() {
   return (
-    <div className="min-h-screen bg-gray-950 pt-14">
-      <main className="flex max-w-[1800px] mx-auto">
-        {/* Left sidebar */}
-        <div className="w-80 flex-shrink-0 border-r border-gray-800 min-h-[calc(100vh-3.5rem)]">
-          <LessonSidebar />
+    <main className="flex w-f justify-between  mx-auto">
+      {/* Left sidebar */}
+      <div className="w-80 flex-shrink-0 border-r border-gray-800 min-h-[calc(100vh-3.5rem)]">
+        <LessonSidebar />
+      </div>
+
+      {/* Main content area */}
+      <div className="flex-1 flex justify-between p-6">
+
+        {/* Left side - Lesson content */}
+        <div className="flex-1 lg:pr-6">
+          <LessonContent />
         </div>
 
-        {/* Main content area */}
-        <div className="flex-1 p-6">
-          <div className="flex gap-6">
-            {/* Left side - Lesson content */}
-            <div className="flex-1 max-w-3xl">
-              <LessonContent />
-            </div>
+        {/* Right side - Video and AI Chat */}
+        <div className="w-[400px] slef-end space-y-4 sticky pt-14">
+          <div className='fixed space-y-4 w-[400px]'>
 
-            {/* Right side - Video and AI Chat */}
-            <div className="w-[400px] space-y-4 sticky top-20">
-              <VideoPlayer />
-              <AIChat />
-            </div>
+          <VideoPlayer  />
+          <AIChat />
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   )
 }

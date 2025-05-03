@@ -1,12 +1,12 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion"
+// import {
+//     Accordion,
+//     AccordionContent,
+//     AccordionItem,
+//     AccordionTrigger,
+// } from "@/components/ui/accordion"
 import { Button } from './ui/button';
 import { ConceptType } from '@/schemas/concepts';
 import { Skeleton } from './ui/skeleton';
@@ -178,18 +178,6 @@ export const LessonContent = () => {
                     </div>
                 </div>
 
-                <div className="mt-12">
-                    <Accordion type="single" collapsible className="border-gray-800">
-                        <AccordionItem value="practice" className="border-gray-800">
-                            <AccordionTrigger className="text-white hover:text-green-400">
-                                Practice Questions
-                            </AccordionTrigger>
-                            <AccordionContent className="text-gray-300">
-                                No practice questions available for this concept.
-                            </AccordionContent>
-                        </AccordionItem>
-                    </Accordion>
-                </div>
             </div>
 
             {/* Exercise Section */}

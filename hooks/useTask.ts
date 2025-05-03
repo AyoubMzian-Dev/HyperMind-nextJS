@@ -27,17 +27,16 @@ export function useTask({ initialTask, onUpdate }: UseTaskProps): UseTaskReturn 
       const updatedSteps = prevTask.taskSteps.map(step =>
         step.stepId === stepId ? { ...step, stepCompleted: completed } : step
       )
-      const updatedTask = {
+
+      const isNowComplete = updatedSteps.length > 0 && updatedSteps.every(step => step.stepCompleted)
+
+      return {
         ...prevTask,
         taskSteps: updatedSteps,
-        taskStatus: completed && updatedSteps.every(step => step.stepCompleted)
-          ? TaskStatus.COMPLETED
-          : TaskStatus.IN_PROGRESS
+        taskStatus: isNowComplete ? TaskStatus.COMPLETED : TaskStatus.IN_PROGRESS
       }
-      onUpdate?.(updatedTask)
-      return updatedTask
     })
-  }, [onUpdate])
+  }, [])
 
   const updateTaskStatus = useCallback((completed: boolean) => {
     setTask(prevTask => {

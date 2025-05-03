@@ -7,20 +7,24 @@ import {
   AlertDialog,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-
-
 import { SubjectSchema } from "@/schemas/subject"
 import { Lesson } from "@/schemas/lessons"
 
 
+
+
+
+const API_URI = process.env.API_URI!; 
+
+
 // GET Lessons
 async function getLessons() {
-  const res = await fetch("http://localhost:3000/api/lessons", {
+  const res = await fetch(`${API_URI}/lessons`, {
     cache: "no-store"
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch subjects");
+    throw new Error("Failed to fetch lessons");
   }
 
   return res.json();
@@ -29,7 +33,7 @@ async function getLessons() {
 
 // GET Subjects 
 async function getSubjects() {
-  const res = await fetch("http://localhost:3000/api/subjects", {
+  const res = await fetch(`${API_URI}/subjects`, {
     cache: "no-store", // Ensure fresh data on every request
   });
 

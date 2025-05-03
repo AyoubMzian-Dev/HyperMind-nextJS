@@ -25,7 +25,7 @@ import { Task } from '@/schemas/tasks'
 // })
 
 // Task schema
-const TaskSchema = new Schema({
+export  const TaskSchema = new Schema({
   taskId: { type: Number, required: true, unique: true },
   taskTitle: { type: String, required: true },
   taskDescription: { type: String, default: '' },

@@ -61,7 +61,7 @@ export const LessonSidebar = () => {
     }
 
     return (
-        <div className="h-[calc(100vh-5rem)] overflow-y-auto">
+        <div className="h-[calc(100vh-5rem)] w-80 fixed overflow-y-auto">
             <div className="p-6 space-y-6">
                 {/* Header */}
                 <div className="space-y-4">
