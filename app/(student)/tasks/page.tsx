@@ -17,21 +17,18 @@ import { toast } from "sonner"
 
 
 
-
 export default function TasksPage() {
 
-
-  
   const [searchQuery, setSearchQuery] = useState("")
   const [tasks, setTasks] = useState<Task[]>([])
   const [isNewTaskFormOpen, setIsNewTaskFormOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
+
   // Fetch tasks on component mount
   useEffect(() => {
     fetchTasks()
   }, [])
-
   const fetchTasks = async () => {
     try {
       setIsLoading(true)
@@ -47,16 +44,27 @@ export default function TasksPage() {
     }
   }
 
+
+  // Function to handle task updates 
   const handleTaskUpdate = (updatedTask: Task) => {
-    if (updatedTask.deleted) {
-      setTasks(tasks.filter(task => task.taskId !== updatedTask.taskId))
-    } else {
-      setTasks(tasks.map(task =>
-        task.taskId === updatedTask.taskId ? updatedTask : task
-      ))
-    }
+    setTasks(tasks.map(task =>
+      task.taskId === updatedTask.taskId ? updatedTask : task
+    ))
   }
 
+  // Function to handle task deletion
+  async function handleDeleteTask(taskId: number) {
+    try {
+      // Remove the task from the local state
+      setTasks(prevTasks => prevTasks.filter(task => task.taskId !== taskId))
+
+      toast.success('Task deleted successfully')
+    } catch (error) {
+      console.error('Error deleting task:', error)
+      toast.error('Failed to delete task')
+    }
+  }
+  // Function to handle task creation
   const handleCreateTask = async (taskData: Omit<Task, 'taskId' | 'taskStatus' | 'taskCreatedDate'>) => {
     try {
       // Only validate title
@@ -129,19 +137,13 @@ export default function TasksPage() {
       throw error;
     }
   }
-
-   async function handleDeleteTask(taskId: number){
-    // Remove the task from the local state
-    setTasks(prevTasks => prevTasks.filter(task => task.taskId !== taskId))
-  }
-
+  // Function to handle task filtering
   const filteredTasks = tasks.filter(task =>
     task.taskTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
     task.taskDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
     task.taskSubject.toLowerCase().includes(searchQuery.toLowerCase()) ||
     task.taskTags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
   )
-  console.log(tasks)
   return (
     <div className="min-h-screen mt-10 text-slate-50 p-6">
       <div className="max-w-7xl mx-auto">

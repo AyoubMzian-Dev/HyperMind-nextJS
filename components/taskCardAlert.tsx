@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Step, Task } from "@/types/task"
 import { useState } from "react"
-import { Clock, CheckCircle2, ExternalLink, LinkIcon, FileIcon } from "lucide-react"
+import { Clock, CheckCircle2, ExternalLink, LinkIcon, Trash2, CircleFadingArrowUp, FileIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import {
@@ -28,11 +28,10 @@ interface TaskCardAlertProps {
   timeEstimate?: number // in minutes
 }
 
-/**
- * TaskCardAlert component for individual task steps
- * @param props Component properties
- * @returns A motion-animated step item with completion toggle
- */
+
+
+
+
 export default function TaskCardAlert({ 
   step, 
   onStepUpdate, 
@@ -155,11 +154,8 @@ export default function TaskCardAlert({
   )
 }
 
-/**
- * TaskDetailAlert component for displaying detailed task information
- * @param props Component properties including the task and event handlers
- * @returns AlertDialog content for task details
- */
+
+
 export function TaskDetailAlert({ 
   task, 
   progress, 
@@ -171,18 +167,31 @@ export function TaskDetailAlert({
   onStepUpdate: (stepId: number, completed: boolean) => void
   onDeleteTask: () => void
 }) {
+
+
+
   return (
-    <AlertDialogContent className="bg-gradient-to-br from-slate-900 to-slate-950 border-slate-700 text-slate-50 max-w-4xl rounded-xl shadow-xl">
+    <AlertDialogContent className="bg-gradient-to-br from-slate-900 to-slate-950 border-slate-700 text-slate-50 max-w-4xl lg:min-h-[80%] rounded-xl shadow-xl">
       {/* Task Header Section */}
+
       <AlertDialogHeader className="mb-6 w-full">
         <div className="flex flex-col space-y-4 w-full">
-          {/* Title and Delete Button */}
+
+          {/* Title and Delete/Update Button */}
           <div className="flex justify-between items-start">
             <div className="flex-1">
               <AlertDialogTitle className="text-2xl font-bold text-white">
                 {task.taskTitle}
               </AlertDialogTitle>
             </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              // onClick={openUpdate}
+              className="hover:bg-blue-500/20 text-blue-400 hover:text-blue-300 rounded-full p-2 ml-2"
+            >
+              <CircleFadingArrowUp className="w-5 h-5" />
+            </Button>
             
             <Button
               variant="ghost"
@@ -190,7 +199,7 @@ export function TaskDetailAlert({
               onClick={onDeleteTask}
               className="hover:bg-red-500/20 text-red-400 hover:text-red-300 rounded-full p-2 ml-2"
             >
-              <FileIcon className="w-5 h-5" />
+              <Trash2 className="w-5 h-5" />
             </Button>
           </div>
           
@@ -267,8 +276,11 @@ export function TaskDetailAlert({
       
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+
         {/* Left Column - Description and Steps */}
         <div className="space-y-6">
+        
           {/* Description Section */}
           <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
             <h3 className="text-lg font-semibold text-slate-50 mb-2">Description</h3>
@@ -278,7 +290,7 @@ export function TaskDetailAlert({
           </div>
           
           {/* Steps Section */}
-          <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+          <div className="bg-slate-800/50 p-4 rounded-lg max-h-48 flex flex-col scroll-smooth md:scroll-auto border border-slate-700">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold text-slate-50">Steps</h3>
               <div className="flex items-center">
@@ -288,7 +300,7 @@ export function TaskDetailAlert({
             </div>
             
             {/* Steps list with scrollable container */}
-            <div className="space-y-3 max-h-[250px] overflow-y-auto pr-2">
+            <div className="space-y-3 max-h-[250px] overflow-y-auto pr-2 ">
               {task.taskSteps.map((step) => (
                 <TaskCardAlert 
                   key={step.stepId}
@@ -300,8 +312,10 @@ export function TaskDetailAlert({
           </div>
         </div>
         
+
         {/* Right Column - Attachments and Links */}
         <div className="space-y-6">
+
           {/* Attachments Section */}
           <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
             <h3 className="text-lg font-semibold text-slate-50 mb-4">Attachments</h3>

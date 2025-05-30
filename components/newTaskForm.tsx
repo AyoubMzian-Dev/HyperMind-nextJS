@@ -19,13 +19,13 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Task, TaskType, Step, Attachment, TaskLink } from '@/types/task'
 import { toast } from 'sonner'
 
-interface NewTaskFormProps {
+interface NewTaskFormProps{
   isOpen: boolean
   onClose: () => void
   onSubmit: (task: Omit<Task, 'taskId' | 'taskStatus' | 'taskCreatedDate'>) => Promise<void>
 }
 
-export function NewTaskForm({ isOpen, onClose, onSubmit }: NewTaskFormProps) {
+export function NewTaskForm({ isOpen, onClose, onSubmit }: NewTaskFormProps, task ?: Task) {
   const [formData, setFormData] = useState({
     taskTitle: '',
     taskDescription: '',
@@ -277,6 +277,7 @@ export function NewTaskForm({ isOpen, onClose, onSubmit }: NewTaskFormProps) {
                     onChange={(e) => setFormData(prev => ({ ...prev, taskTitle: e.target.value }))}
                     placeholder="Enter task title"
                     className="bg-gray-800 border-gray-500 text-gray-50"
+                    defaultValue={task !== undefined ? task.taskTitle : ""}
                     required
                   />
                 </div>

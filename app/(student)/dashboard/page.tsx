@@ -19,6 +19,7 @@ export default function Page() {
       <section className='p-4 min-h-18 '>
         <h1 className='mb-4 text-white font-bold text-2xl '>Course Progress</h1>
         <div className='flex w-full  px-6'>
+          sir lah yn3al li hwak
         </div>
       </section> 
       

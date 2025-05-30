@@ -40,7 +40,6 @@ export default function RootLayout({
                baseTheme: dark,
            }}
        >
-
           <body
             className={`${geistSans.variable} ${geistMono.variable} bg-gray-950 text-white antialiased`}
             >
