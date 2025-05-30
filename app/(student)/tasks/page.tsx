@@ -29,6 +29,8 @@ export default function TasksPage() {
   useEffect(() => {
     fetchTasks()
   }, [])
+
+  // Fetch tasks from the API
   const fetchTasks = async () => {
     try {
       setIsLoading(true)
@@ -46,11 +48,11 @@ export default function TasksPage() {
 
 
   // Function to handle task updates 
-  const handleTaskUpdate = (updatedTask: Task) => {
-    setTasks(tasks.map(task =>
-      task.taskId === updatedTask.taskId ? updatedTask : task
-    ))
-  }
+  // const handleTaskUpdate = (updatedTask: Task) => {
+  //   setTasks(tasks.map(task =>
+  //     task.taskId === updatedTask.taskId ? updatedTask : task
+  //   ))
+  // }
 
   // Function to handle task deletion
   async function handleDeleteTask(taskId: number) {
@@ -185,7 +187,7 @@ export default function TasksPage() {
                 <TaskCard
                   key={task.taskId}
                   task={task}
-                  onTaskUpdate={handleTaskUpdate}
+                  // onTaskUpdate={handleTaskUpdate}
                   onDelete={handleDeleteTask}
                 />
               ))}

@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -17,8 +19,11 @@ import {
   X,
   AlertTriangle,
 } from "lucide-react"
+import { useRouter } from "next/navigation"
 
-export default function page() {
+export default function Page() {
+  const router = useRouter()
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
       {/* Navigation */}
@@ -39,12 +44,13 @@ export default function page() {
               Guarantee
             </a>
             <Button
+              onClick={() => router.push("/sign-in")}
               variant="outline"
               className="border-emerald-400 bg-slate-900/80 text-emerald-400 hover:bg-emerald-400 hover:text-slate-900"
             >
               Sign In
             </Button>
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white">Start Free Trial</Button>
+            <Button onClick={() => router.push("/sign-up")} className="bg-emerald-500 hover:bg-emerald-600 text-white">Start Free Trial</Button>
           </div>
         </div>
       </nav>

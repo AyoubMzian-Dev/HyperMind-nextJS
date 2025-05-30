@@ -27,7 +27,7 @@ interface NewTaskFormProps{
 
 export function NewTaskForm({ isOpen, onClose, onSubmit }: NewTaskFormProps, task ?: Task) {
   const [formData, setFormData] = useState({
-    taskTitle: '',
+    taskTitle: task?.taskTitle || "",
     taskDescription: '',
     taskSubject: '',
     taskType: '' as TaskType,
@@ -277,7 +277,6 @@ export function NewTaskForm({ isOpen, onClose, onSubmit }: NewTaskFormProps, tas
                     onChange={(e) => setFormData(prev => ({ ...prev, taskTitle: e.target.value }))}
                     placeholder="Enter task title"
                     className="bg-gray-800 border-gray-500 text-gray-50"
-                    defaultValue={task !== undefined ? task.taskTitle : ""}
                     required
                   />
                 </div>
