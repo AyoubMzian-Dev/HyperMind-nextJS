@@ -25,12 +25,12 @@ export default function TasksPage() {
   const [isLoading, setIsLoading] = useState(true)
 
 
-  // Fetch tasks on component mount
+
   useEffect(() => {
     fetchTasks()
   }, [])
 
-  // Fetch tasks from the API
+
   const fetchTasks = async () => {
     try {
       setIsLoading(true)
@@ -69,6 +69,9 @@ export default function TasksPage() {
   // Function to handle task creation
   const handleCreateTask = async (taskData: Omit<Task, 'taskId' | 'taskStatus' | 'taskCreatedDate'>) => {
     try {
+      // Debug log 1: Check incoming task data
+      console.log('Incoming task data:', taskData);
+
       // Only validate title
       if (!taskData.taskTitle) {
         throw new Error('Task title is required');
@@ -85,8 +88,15 @@ export default function TasksPage() {
         taskTags: taskData.taskTags || [],
         taskSteps: taskData.taskSteps || [],
         taskAttachments: taskData.taskAttachments || [],
-        taskLinks: taskData.taskLinks || []
+        taskLinks: taskData.taskLinks || [],
+        // Add required fields that were missing
+        taskId: Date.now(), // Generate a unique ID
+        taskCreatedDate: new Date().toISOString().split('T')[0], // Current date in YYYY-MM-DD format
+        taskStatus: 'IN_PROGRESS' // Default status
       }
+
+      // Debug log 2: Check prepared task data
+      console.log('Prepared task data:', taskToCreate);
 
       const response = await fetch('/api/tasks', {
         method: 'POST',
@@ -96,7 +106,7 @@ export default function TasksPage() {
         body: JSON.stringify(taskToCreate),
       })
 
-      // Log the response status for debugging
+      // Debug log 3: Check response status
       console.log('Response status:', response.status);
 
       if (!response.ok) {
@@ -123,6 +133,9 @@ export default function TasksPage() {
       }
 
       const newTask = await response.json();
+      
+      // Debug log 4: Check returned task data
+      console.log('Returned task data:', newTask);
 
       // Validate the returned task data
       if (!newTask.taskId) {
