@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -116,7 +115,7 @@ export default function page() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-6">Tired of These Study Struggles?</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              You're not alone. Most high school students face the same frustrating problems every day
+              You&apos;re not alone. Most high school students face the same frustrating problems every day
             </p>
           </div>
 
@@ -128,7 +127,7 @@ export default function page() {
                 </div>
                 <CardTitle className="text-white">Poor Study Organization</CardTitle>
                 <CardDescription className="text-slate-400">
-                  Don't know how to organize tasks, study time, or prepare for exams effectively
+                  Don&apos;t know how to organize tasks, study time, or prepare for exams effectively
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -170,7 +169,7 @@ export default function page() {
       <section id="benefits" className="py-20 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">Here's How HyperMind Solves This</h2>
+            <h2 className="text-4xl font-bold text-white mb-6">Here&apos;s How HyperMind Solves This</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Four key advantages that transform your study experience completely
             </p>
@@ -210,7 +209,7 @@ export default function page() {
                 </div>
                 <CardTitle className="text-white text-2xl mb-4">Guaranteed</CardTitle>
                 <CardDescription className="text-slate-300 text-lg leading-relaxed">
-                  Try it risk-free with our 7-day free trial. If you're not satisfied, get your money back within the
+                  Try it risk-free with our 7-day free trial. If you&apos;re not satisfied, get your money back within the
                   first 30 days - no questions asked.
                 </CardDescription>
               </CardHeader>
@@ -223,7 +222,7 @@ export default function page() {
                 </div>
                 <CardTitle className="text-white text-2xl mb-4">Better Experience</CardTitle>
                 <CardDescription className="text-slate-300 text-lg leading-relaxed">
-                  Beautiful UI/UX design, high-quality content, and excellent customer support. You'll always feel
+                  Beautiful UI/UX design, high-quality content, and excellent customer support. You&apos;ll always feel
                   supported and never frustrated with the app.
                 </CardDescription>
               </CardHeader>
@@ -389,7 +388,7 @@ export default function page() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-6">Exam Preparation Made Simple</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              When exam time comes, you'll be fully prepared with our systematic approach
+              When exam time comes, you&apos;ll be fully prepared with our systematic approach
             </p>
           </div>
 
@@ -430,7 +429,7 @@ export default function page() {
             <Shield className="h-16 w-16 text-emerald-400 mx-auto mb-6" />
             <h2 className="text-4xl font-bold text-white mb-6">Risk-Free Guarantee</h2>
             <p className="text-xl text-slate-300 mb-8">
-              Try HyperMind completely free for 7 days. If you're not satisfied within the first 30 days, get your money
+              Try HyperMind completely free for 7 days. If you&apos;re not satisfied within the first 30 days, get your money
               back - no questions asked.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
