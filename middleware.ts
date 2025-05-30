@@ -1,44 +1,75 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-//
-const isProtectedRoute = createRouteMatcher([ '/admin(.*)'])
+/**
+ * Middleware configuration for authentication and route protection
+ * This middleware handles:
+ * - Public routes that don't require authentication
+ * - Protected routes that require authentication
+ * - API routes protection
+ * - Static file handling
+ */
 
-export default clerkMiddleware(async (auth, req) => {
-    // Get the current path from the request
-    const path = req.nextUrl.pathname
-    
-    // Skip authentication for root path and sign-in page
-    if (path === '/' || path === '/sign-in') {
-        return
+// Define public routes that don't require authentication
+const publicRoutes = [
+  "/",
+  "/sign-in(.*)",
+  "/sign-up(.*)",
+  "/api/webhook/clerk",
+  "/api/webhook/stripe",
+];
+
+// Create a matcher for protected routes
+const isProtectedRoute = createRouteMatcher([
+  "/admin(.*)",
+  "/dashboard(.*)",
+  "/profile(.*)",
+  "/tasks(.*)",
+  "/subjects(.*)",
+  "/lessons(.*)",
+  "/notifications(.*)",
+  "/settings(.*)",
+]);
+
+export default clerkMiddleware(async (auth, req: NextRequest) => {
+  // Get the current path from the request
+  const path = req.nextUrl.pathname;
+  
+  // Skip authentication for public routes
+  if (publicRoutes.some(route => {
+    const pattern = new RegExp(`^${route.replace(/\(\.\*\)/g, '.*')}$`);
+    return pattern.test(path);
+  })) {
+    return;
+  }
+
+  try {
+    // Protect all other routes
+    if (isProtectedRoute(req)) {
+      await auth.protect();
     }
+  } catch (error) {
+    console.error('Authentication error:', error);
+    // Create redirect URL using NextURL for proper handling
+    const signInUrl = new URL('/sign-in', req.url);
+    signInUrl.searchParams.set('redirect_url', req.url);
+    return NextResponse.redirect(signInUrl);
+  }
+});
 
-    try {
-        // Protect all other routes
-        if (isProtectedRoute(req)) {
-            await auth.protect()
-        }
-    } catch (error) {
-        // Create redirect URL using NextURL for proper handling
-        const redirectUrl = req.nextUrl.clone()
-        redirectUrl.pathname = '/sign-in'
-        // Add the redirect URL as a parameter
-        redirectUrl.searchParams.set('redirect_url', req.url)
-        
-        return Response.redirect(redirectUrl)
-    }
-},
-() => ({
-    // Provide options here
-    signInUrl: '/sign-in',
-    signUpUrl: '/sign-ip'
-}),
-)
-
+/**
+ * Configuration for the middleware
+ * Matches all routes except:
+ * - Next.js internals (_next)
+ * - Static files (images, fonts, etc.)
+ * - API routes (handled separately)
+ */
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
-    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Always run for API routes
-    '/(api|trpc)(.*)',
+    // Match all routes except static files and Next.js internals
+    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    // Match all API routes
+    "/(api|trpc)(.*)",
   ],
-}
+};
